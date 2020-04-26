@@ -41,11 +41,10 @@
     "uuid": "7.0.3"
   },
   "scripts": {
-    "start": "yarn codegen && react-scripts start",
+    "codegen": "graphql-codegen --config codegen.yml -r dotenv/config",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "codegen": "graphql-codegen --config codegen.yml -r dotenv/config"
+    "start": "yarn codegen && react-scripts start",
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"

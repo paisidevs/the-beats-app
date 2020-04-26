@@ -1,6 +1,6 @@
 {
   "name": "the-beats-app",
-  "description": "Music steamingg PWA",
+  "description": "Music steaming PWA",
   "private": true,
   "scripts": {
     "start": "lerna run --parallel start"
