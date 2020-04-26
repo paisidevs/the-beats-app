@@ -1,0 +1,21 @@
+# import Playlist, PlaylistConnection from "../../generated/prisma.graphql"
+
+type Query {
+  playlist(id: ID!): Playlist
+  playlists: PlaylistConnection
+}
+
+type Mutation {
+  createPlaylist(input: PlaylistCreatePayload!): Playlist
+  addToPlaylist(input: AddToPlaylistPayload!): Playlist
+}
+
+input PlaylistCreatePayload {
+  name: NonEmptyString!
+  trackId: ID
+}
+
+input AddToPlaylistPayload {
+  playlistId: ID!
+  trackId: ID!
+}
