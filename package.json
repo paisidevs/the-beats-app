@@ -2,7 +2,13 @@
   "name": "the-beats-app",
   "description": "Music steamingg PWA",
   "private": true,
+  "scripts": {
+    "start": "lerna run --parallel start"
+  },
   "devDependencies": {
     "lerna": "^3.20.2"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

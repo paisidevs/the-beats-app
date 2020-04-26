@@ -1,0 +1,13 @@
+#import '../fragments/todo.graphql'
+
+mutation createTodo($input: CreateTodoInput!) {
+  createTodo(input: $input) @client {
+    ...todo
+  }
+}
+
+mutation deleteTodo($id: ID!) {
+  deleteTodo(id: $id) @client {
+    ...todo
+  }
+}
