@@ -6,11 +6,11 @@ type Query {
 }
 
 type Mutation {
-  createPlaylist(input: PlaylistCreatePayload!): Playlist
+  createPlaylist(input: CreatePlaylistInput!): Playlist
   addToPlaylist(input: AddToPlaylistPayload!): Playlist
 }
 
-input PlaylistCreatePayload {
+input CreatePlaylistInput {
   name: NonEmptyString!
   trackId: ID
 }

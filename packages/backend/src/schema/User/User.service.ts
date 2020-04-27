@@ -1,7 +1,7 @@
 import * as bcrypt from "bcrypt";
 import {
   UserCreateInput,
-  UserUpdateInput
+  UserUpdateInput,
 } from "../../generated/prisma-client";
 import { Context } from "../../typings";
 import { generateToken, getAuthenticatedUser, hashPassword } from "../../utils";
@@ -26,19 +26,22 @@ export const createUser = async (user, { prisma }: Context) => {
   const payload: UserCreateInput = {
     email,
     password: hashedPassword,
-    ...(isAdmin ? { isAdmin } : {})
+    ...(isAdmin ? { isAdmin } : {}),
   };
 
   try {
     const user = await prisma.createUser({ ...payload });
 
+    const { id, ...attributes } = user;
+
     return {
-      token: generateToken(user),
-      user
+      id,
+      accessToken: generateToken(user),
+      attributes,
     };
   } catch (error) {
     throw new UnknownError({
-      message: error.message
+      message: error.message,
     });
   }
 };
@@ -61,13 +64,13 @@ export const updateUser = async (input, context: Context) => {
   try {
     const user = await prisma.updateUser({
       data: payload,
-      where: { id: authenticatedUserId }
+      where: { id: authenticatedUserId },
     });
 
     return user;
   } catch (error) {
     throw new UnknownError({
-      message: error.message
+      message: error.message,
     });
   }
 };
@@ -95,8 +98,11 @@ export const authenticateUser = async (
     throw new Error("Invalid email/password combination!");
   }
 
+  const { id, ...attributes } = user;
+
   return {
-    token: generateToken(user),
-    user
+    id,
+    accessToken: generateToken(user),
+    attributes,
   };
 };
