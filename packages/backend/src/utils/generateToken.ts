@@ -1,6 +1,6 @@
+import { User } from "@prisma/client";
 import * as jwt from "jsonwebtoken";
 import { APP_SECRET, JWT_EXPIRES_IN } from "../constants";
-import { User } from "../generated/prisma-client";
 
 /**
  * Generates JWT token from user object
@@ -8,7 +8,7 @@ import { User } from "../generated/prisma-client";
 export const generateToken = (user: User) => {
   const payload = {
     userId: user.id,
-    isAdmin: user.isAdmin
+    role: user.role
   };
 
   return jwt.sign(payload, APP_SECRET, {

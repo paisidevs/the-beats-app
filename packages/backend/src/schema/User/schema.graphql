@@ -1,11 +1,25 @@
-# import PageInfo from "../../generated/prisma.graphql"
+enum Role {
+  ADMIN
+  SUBSCRIBER
+}
 
-scalar NonEmptyString
+type User implements Node {
+  id: ID!
+  createdAt: DateTime!
+  email: String!
+  firstName: String
+  lastName: String
+  playlists: [Playlist]
+  role: Role
+  username: String!
+  verified: Boolean!
+}
 
 type CognitoUserAttributes {
   email: String!
-  isAdmin: Boolean!
-  name: String
+  firstName: String
+  lastName: String
+  role: Role!
   username: String
   verified: Boolean!
 }
@@ -16,29 +30,30 @@ type CognitoUser {
   attributes: CognitoUserAttributes!
 }
 
+input CreateUserInput {
+  email: String!
+  password: String!
+  role: Role
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  firstName: NonEmptyString
+  lastName: NonEmptyString
+  role: Role
+}
+
 type Query {
   user(id: ID!): User
-  users: UserConnection
+  users: [User]
 }
 
 type Mutation {
   createUser(input: CreateUserInput!): CognitoUser!
   updateUser(input: UpdateUserInput!): User!
   authenticateUser(input: LoginUserInput!): CognitoUser!
-}
-
-input CreateUserInput {
-  email: String!
-  password: String!
-  isAdmin: Boolean
-}
-
-input UpdateUserInput {
-  name: NonEmptyString
-  username: NonEmptyString
-}
-
-input LoginUserInput {
-  email: String!
-  password: String!
 }

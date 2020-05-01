@@ -7,6 +7,13 @@
 scalar Duration
 scalar NonEmptyString
 
+type Image implements Node {
+  createdAt: DateTime!
+  id: ID!
+  url: String!
+  uploadedBy: User!
+}
+
 enum ReleaseType {
   ALBUM
   EP
@@ -15,6 +22,6 @@ enum ReleaseType {
   SINGLE
 }
 
-type Node {
+interface Node {
   id: ID!
 }

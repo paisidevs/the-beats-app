@@ -1,8 +1,5 @@
+import { UserCreateInput, UserUpdateInput } from "@prisma/client";
 import * as bcrypt from "bcrypt";
-import {
-  UserCreateInput,
-  UserUpdateInput,
-} from "../../generated/prisma-client";
 import { Context } from "../../typings";
 import { generateToken, getAuthenticatedUser, hashPassword } from "../../utils";
 import { UnknownError } from "../../utils/errors";
@@ -13,9 +10,9 @@ import { UnknownError } from "../../utils/errors";
  * @param context - Exposes prisma
  */
 export const createUser = async (user, { prisma }: Context) => {
-  const { email, password, isAdmin } = user;
+  const { email, password, username, role } = user;
 
-  const userExists = await prisma.$exists.user({ email });
+  const userExists = await prisma.user.findOne({ where: { email } });
 
   if (userExists) {
     throw new Error("An account with this email already exists!");
@@ -26,22 +23,23 @@ export const createUser = async (user, { prisma }: Context) => {
   const payload: UserCreateInput = {
     email,
     password: hashedPassword,
-    ...(isAdmin ? { isAdmin } : {}),
+    username: username || email,
+    ...(role ? { role } : {})
   };
 
   try {
-    const user = await prisma.createUser({ ...payload });
+    const user = await prisma.user.create({ data: payload });
 
     const { id, ...attributes } = user;
 
     return {
       id,
       accessToken: generateToken(user),
-      attributes,
+      attributes
     };
   } catch (error) {
     throw new UnknownError({
-      message: error.message,
+      message: error.message
     });
   }
 };
@@ -62,15 +60,14 @@ export const updateUser = async (input, context: Context) => {
   const payload: UserUpdateInput = input;
 
   try {
-    const user = await prisma.updateUser({
+    const user = await prisma.user.update({
       data: payload,
-      where: { id: authenticatedUserId },
+      where: { id: authenticatedUserId }
     });
-
     return user;
   } catch (error) {
     throw new UnknownError({
-      message: error.message,
+      message: error.message
     });
   }
 };
@@ -85,8 +82,7 @@ export const authenticateUser = async (
   { prisma }: Context
 ) => {
   const { email, password } = userCredentials;
-
-  const user = await prisma.user({ email });
+  const user = await await prisma.user.findOne({ where: { email } });
 
   if (!user) {
     throw new Error("Account doesn't exist!");
@@ -103,6 +99,6 @@ export const authenticateUser = async (
   return {
     id,
     accessToken: generateToken(user),
-    attributes,
+    attributes
   };
 };

@@ -1,13 +1,21 @@
-# import Playlist, PlaylistConnection from "../../generated/prisma.graphql"
-
-type Query {
-  playlist(id: ID!): Playlist
-  playlists: PlaylistConnection
+enum Privacy {
+  PRIVATE
+  PUBLIC
+  UNLISTED
 }
 
-type Mutation {
-  createPlaylist(input: CreatePlaylistInput!): Playlist
-  addToPlaylist(input: AddToPlaylistPayload!): Playlist
+type Playlist implements Node {
+  id: ID!
+  alias: String!
+  artwork: Image
+  collaborative: Boolean!
+  createdAt: DateTime!
+  creator: User!
+  creatorId: ID!
+  description: String
+  name: String!
+  numTracks: Int!
+  privacy: Privacy!
 }
 
 input CreatePlaylistInput {
@@ -15,7 +23,17 @@ input CreatePlaylistInput {
   trackId: ID
 }
 
-input AddToPlaylistPayload {
+input AddToPlaylistInpuut {
   playlistId: ID!
   trackId: ID!
+}
+
+type Query {
+  playlist(id: ID!): Playlist
+  playlists: [Playlist]
+}
+
+type Mutation {
+  addToPlaylist(input: AddToPlaylistInpuut!): Playlist
+  createPlaylist(input: CreatePlaylistInput!): Playlist
 }

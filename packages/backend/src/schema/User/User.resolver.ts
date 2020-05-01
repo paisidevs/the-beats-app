@@ -12,22 +12,22 @@ export default {
     updateUser: (_, { input }, context: Context) =>
       service.updateUser(input, context),
     authenticateUser: (_, { input }, context: Context) =>
-      service.authenticateUser(input, context),
+      service.authenticateUser(input, context)
   },
   Query: {
-    user: (_, { id }, { prisma }: Context) => prisma.user({ id }),
+    user: (_, { id }, { prisma }: Context) =>
+      prisma.user.findOne({ where: { id } }),
     users: (_, __, { prisma }: Context) =>
-      prisma.usersConnection({ orderBy: "name_ASC" }),
+      prisma.user.findMany({ orderBy: { firstName: "asc" } })
   },
   User: {
-    password: () => "***",
     playlists: ({ id }, _, { prisma }: Context) => {
-      return prisma.user({ id }).playlists();
-    },
+      return prisma.user.findOne({ where: { id } }).playlists();
+    }
   },
   Node: {
     __resolveType() {
       return null;
-    },
-  },
+    }
+  }
 };

@@ -1,0 +1,116 @@
+type Artist {
+  # id: ID! @id
+  # albums: [Album!]! @relation(name: "AlbumCreatedBy", onDelete: SET_NULL)
+  # alias: String! @unique
+  # avatar: Image
+  # createdAt: DateTime! @createdAt
+  # featuresIn: [Track!]! @relation(name: "FeaturesIn", onDelete: SET_NULL)
+  # genres: [String!] @scalarList(strategy: RELATION)
+  # name: String!
+  # tracks: [Track!]! @relation(name: "ByArtist", onDelete: CASCADE)
+  # updatedAt: DateTime! @updatedAt
+}
+
+type Track {
+  # id: ID! @id
+  # album: Album! @relation(name: "InAlbum")
+  # artists: [Artist!]! @relation(name: "ByArtist")
+  # audio: Audio
+  # createdAt: DateTime! @createdAt
+  # discNumber: Int
+  # duration: Int
+  # explicit: Boolean! @default(value: false)
+  # featuring: [Artist!]! @relation(name: "FeaturesIn")
+  # genre: String! @default(value: "Other")
+  # isPlayable: Boolean! @default(value: true)
+  # name: String!
+  # trackNumber: Int!
+  # updatedAt: DateTime! @updatedAt
+}
+
+type Album {
+  # id: ID! @id
+  # addedBy: User!
+  # alias: String! @unique
+  # artists: [Artist!]! @relation(name: "AlbumCreatedBy")
+  # artwork: Image
+  # createdAt: DateTime! @createdAt
+  # duration: Int
+  # genres: [String!] @scalarList(strategy: RELATION)
+  # name: String!
+  # numTracks: Int
+  # releaseDate: DateTime!
+  # releaseType: ReleaseType!
+  # tracks: [Track!]! @relation(name: "InAlbum", onDelete: CASCADE)
+  # updatedAt: DateTime! @updatedAt
+}
+
+type Image {
+  # id: ID! @id
+  # createdAt: DateTime! @createdAt
+  # updatedAt: DateTime! @updatedAt
+  # uploadedBy: User!
+  # url: String!
+}
+
+type Audio {
+  # id: ID! @id
+  # bitrate: Int
+  # createdAt: DateTime! @createdAt
+  # format: String!
+  # size: Int
+  # updatedAt: DateTime! @updatedAt
+  # uploadedBy: User!
+  # url: String!
+}
+
+type Playlist {
+  # id: ID! @id
+  # alias: String! @unique
+  artwork: [Image!]!
+  # collaborative: Boolean! @default(value: false)
+  # createdAt: DateTime! @createdAt
+  # creator: User! @relation(name: "CreatedBy")
+  # description: String
+  # duration: Int!
+  # name: String!
+  # numTracks: Int!
+  # privacy: Privacy! @default(value: PRIVATE)
+  # tracks: [PlaylistTrack!]! @relation(name: "InPlaylist", onDelete: CASCADE)
+  # updatedAt: DateTime! @updatedAt
+}
+
+type PlaylistTrack {
+  # id: ID! @id
+  # addedAt: DateTime!
+  # addedBy: User!
+  # playlists: [Playlist!]! @relation(name: "InPlaylist")
+  # track: Track!
+}
+
+type User {
+  # id: ID! @id
+  # createdAt: DateTime! @createdAt
+  # email: String! @unique
+  # isAdmin: Boolean! @default(value: false)
+  # name: String
+  # password: String!
+  # playlists: [Playlist!]! @relation(name: "CreatedBy")
+  # updatedAt: DateTime! @updatedAt
+  # username: String @unique
+  # verified: Boolean! @default(value: false)
+}
+
+enum ReleaseType {
+#   ALBUM
+#   EP
+#   LP
+#   PODCAST
+#   SINGLE
+}
+
+enum Privacy {
+#   PRIVATE
+#   PUBLIC
+#   UNLISTED
+}

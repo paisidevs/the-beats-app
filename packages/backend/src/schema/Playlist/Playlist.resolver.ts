@@ -13,31 +13,32 @@ export default {
       service.addToPlaylist(input, context)
   },
   Query: {
-    playlist: (_, { id }, { prisma }: Context) => prisma.playlist({ id }),
+    playlist: (_, { id }, { prisma }: Context) =>
+      prisma.playlist.findOne({ where: { id } }),
     playlists: (_, __, { prisma }: Context) =>
-      prisma.playlistsConnection({ orderBy: "name_ASC" })
+      prisma.playlist.findMany({ orderBy: { name: "asc" } })
   },
   Playlist: {
     creator: ({ id }: any, _, { prisma }: Context) => {
-      return prisma.playlist({ id }).creator();
+      return prisma.playlist.findOne({ where: { id } }).creator();
     },
     artwork: ({ id }: any, _, { prisma }: Context) => {
-      return prisma.playlist({ id }).artwork();
-    },
-    tracks: ({ id }: any, { orderBy }, { prisma }: Context) => {
-      return prisma
-        .playlist({ id })
-        .tracks({ orderBy: orderBy || "addedAt_ASC" });
+      return prisma.playlist.findOne({ where: { id } }).artwork();
     }
+    // tracks: ({ id }: any, { orderBy }, { prisma }: Context) => {
+    //   return prisma
+    //     .playlist.findOne({ where: { id } })
+    //     .tracks({ orderBy:  });
+    // }
   },
-  PlaylistTrack: {
-    addedBy: ({ id }: any, _, { prisma }: Context) => {
-      return prisma.playlistTrack({ id }).addedBy();
-    },
-    track: ({ id }: any, _, { prisma }: Context) => {
-      return prisma.playlistTrack({ id }).track();
-    }
-  },
+  // PlaylistTrack: {
+  //   addedBy: ({ id }: any, _, { prisma }: Context) => {
+  //     return prisma.playlistTrack({ id }).addedBy();
+  //   },
+  //   track: ({ id }: any, _, { prisma }: Context) => {
+  //     return prisma.playlistTrack({ id }).track();
+  //   }
+  // },
   Node: {
     __resolveType() {
       return null;

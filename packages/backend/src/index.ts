@@ -1,7 +1,9 @@
+import { PrismaClient } from "@prisma/client";
 import { GraphQLServer, Options } from "graphql-yoga";
-import { prisma } from "./generated/prisma-client";
 import * as schema from "./schema";
 import { formatError } from "./utils/apollo-errors";
+
+const prisma = new PrismaClient();
 
 const options: Options = {
   formatError

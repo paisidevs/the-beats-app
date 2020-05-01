@@ -1,6 +1,6 @@
-import { Prisma } from "../generated/prisma-client";
+import { PrismaClient } from "@prisma/client";
 
 export interface Context {
-  prisma: Prisma;
+  prisma: PrismaClient;
   request?: any;
 }
