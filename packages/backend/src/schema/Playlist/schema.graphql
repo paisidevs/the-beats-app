@@ -4,6 +4,17 @@ enum Privacy {
   UNLISTED
 }
 
+type PlaylistTrack implements Node {
+  addedAt: DateTime!
+  addedById: String!
+  id: ID!
+  playlistId: String!
+  trackId: String!
+  addedBy: User!
+  playlist: Playlist!
+  track: Track!
+}
+
 type Playlist implements Node {
   id: ID!
   alias: String!
@@ -13,9 +24,11 @@ type Playlist implements Node {
   creator: User!
   creatorId: ID!
   description: String
+  duration: Int!
   name: String!
   numTracks: Int!
   privacy: Privacy!
+  tracks: [PlaylistTrack]
 }
 
 input CreatePlaylistInput {
@@ -23,7 +36,7 @@ input CreatePlaylistInput {
   trackId: ID
 }
 
-input AddToPlaylistInpuut {
+input AddToPlaylistInput {
   playlistId: ID!
   trackId: ID!
 }
@@ -34,6 +47,6 @@ type Query {
 }
 
 type Mutation {
-  addToPlaylist(input: AddToPlaylistInpuut!): Playlist
+  addToPlaylist(input: AddToPlaylistInput!): Playlist
   createPlaylist(input: CreatePlaylistInput!): Playlist
 }

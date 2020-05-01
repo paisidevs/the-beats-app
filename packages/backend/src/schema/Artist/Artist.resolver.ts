@@ -11,22 +11,23 @@ export default {
       service.createArtist(input, context)
   },
   Query: {
-    artist: (_, { id }, { prisma }: Context) => prisma.artist({ id }),
+    artist: (_, { id }, { prisma }: Context) =>
+      prisma.artist.findOne({ where: { id } }),
     artists: (_, __, { prisma }: Context) =>
-      prisma.artistsConnection({ orderBy: "name_ASC" })
+      prisma.artist.findMany({ orderBy: { name: "asc" } })
   },
   Artist: {
     albums: ({ id }, _, { prisma }: Context) => {
-      return prisma.artist({ id }).albums();
+      return prisma.artist.findOne({ where: { id } }).albums();
     },
     avatar: ({ id }, _, { prisma }: Context) => {
-      return prisma.artist({ id }).avatar();
+      return prisma.artist.findOne({ where: { id } }).avatar();
     },
     featuresIn: ({ id }, _, { prisma }: Context) => {
-      return prisma.artist({ id }).featuresIn();
+      return prisma.artist.findOne({ where: { id } }).featuresIn();
     },
     tracks: ({ id }, _, { prisma }: Context) => {
-      return prisma.artist({ id }).tracks();
+      return prisma.artist.findOne({ where: { id } }).tracks();
     }
   },
   Node: {

@@ -22,7 +22,7 @@ model Album {
   uploaderId  String
   artwork     Image?       @relation(fields: [artworkId], references: [id])
   uploadedBy  User         @relation(fields: [uploaderId], references: [id])
-  tracks      Track[]
+  tracks      Track[]       
   artists     Artist[]     @relation("AlbumCreatedBy", references: [id])
 }
 
@@ -30,10 +30,9 @@ model Artist {
   alias      String   @unique
   avatarId   String?
   createdAt  DateTime @default(now())
-  firstName  String?
+  name       String
   genres     String[]
   id         String   @default(dbgenerated()) @id
-  lastName   String?
   avatar     Image?   @relation(fields: [avatarId], references: [id])
   albums     Album[]  @relation("AlbumCreatedBy", references: [id])
   tracks     Track[]  @relation("ByArtist", references: [id])
@@ -98,7 +97,7 @@ model Track {
   discNumber        Int?            @default(1)
   duration          Int?            @default(0)
   explicit          Boolean         @default(false)
-  genre             String
+  genre             String?
   id                String          @default(dbgenerated()) @id
   isPlayable        Boolean         @default(false)
   name              String
@@ -117,14 +116,14 @@ model User {
   id            String          @default(dbgenerated()) @id
   lastName      String?
   password      String
-  playlists     PlaylistTrack[]
+  playlists      Playlist[]
   role          Role?           @default(SUBSCRIBER)
   username      String          @unique
   verified      Boolean         @default(false)
   Album         Album[]
   Audio         Audio[]
   Image         Image[]
-  Playlist      Playlist[]
+  PlaylistTrack     PlaylistTrack[]
 }
 
 enum Privacy {

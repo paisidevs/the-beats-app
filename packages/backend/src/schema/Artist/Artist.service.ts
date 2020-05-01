@@ -1,4 +1,3 @@
-import { ArtistCreateInput } from "../../generated/prisma-client";
 import { Context } from "../../typings";
 import { generateAlias } from "../../utils";
 import { UnknownError } from "../../utils/errors";
@@ -12,19 +11,19 @@ export const createArtist = async (artist, { prisma }: Context) => {
   const { name } = artist;
   const alias = generateAlias(name);
 
-  const artistExists = await prisma.$exists.artist({ alias });
+  const artistExists = await prisma.artist.findOne({ where: { alias } });
 
   if (artistExists) {
-    return await prisma.artist({ alias });
+    return artistExists;
   }
 
-  const payload: ArtistCreateInput = {
+  const payload = {
     alias,
     name
   };
 
   try {
-    const createdArtist = await prisma.createArtist({ ...payload });
+    const createdArtist = await prisma.artist.create({ data: payload });
 
     return createdArtist;
   } catch (error) {

@@ -1,6 +1,9 @@
 import { PrismaClient } from "@prisma/client";
+import { createAlbum } from "../src/schema/Album/Album.service";
 import { createUser } from "../src/schema/User/User.service";
 import { Context } from "../src/typings";
+import albumsToCreate from "./data/albums";
+
 const prisma = new PrismaClient();
 
 let context: Context = {
@@ -9,6 +12,8 @@ let context: Context = {
 };
 
 async function main() {
+  console.log("Creating user...");
+
   const user = await createUser(
     {
       email: "mpofuthandolwethu@gmail.com",
@@ -21,17 +26,34 @@ async function main() {
     context
   );
 
-  console.log("User created...", user);
+  console.log("User created...");
+  // const user = await authenticateUser(
+  //   { email: "mpofuthandolwethu@gmail.com", password: "password" },
+  //   context
+  // );
 
-  // const { id } = await prisma.user.create({
-  //   data: {
-  //     email: "mpofuthandolwethu@gmail.com",
-  //     firstName: "Thandolwethu",
-  //     lastName: "Mpofu",
-  //     role: "ADMIN",
-  //     username: "elandamor"
-  //   }
-  // });
+  context.request = {
+    headers: {
+      authorization: `Bearer ${user.accessToken}`
+    }
+  };
+
+  console.log("Creating albums...");
+
+  albumsToCreate.forEach(async album => {
+    console.log(`  Creating ${album.name}`);
+
+    await createAlbum(
+      {
+        ...album
+      },
+      context
+    );
+  });
+
+  console.log("Albums created...");
+
+  // console.log("Creating playlist...");
 
   // await prisma.playlist.create({
   //   data: {
@@ -43,6 +65,8 @@ async function main() {
   //     numTracks: 0
   //   }
   // });
+
+  // console.log("Playlist created...");
 }
 main()
   .catch(e => {

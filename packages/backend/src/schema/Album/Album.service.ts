@@ -1,4 +1,4 @@
-import { AlbumCreateInput } from "../../generated/prisma-client";
+import { AlbumCreateInput } from "@prisma/client";
 import { Context } from "../../typings";
 import { generateAlias, getAuthenticatedUser, getDuration } from "../../utils";
 import {
@@ -25,10 +25,10 @@ export const createAlbum = async (album, context: Context) => {
     });
   }
 
-  const { artists, name, releaseDate, releaseType, tracks } = album;
+  const { artists, name, releaseDate, releaseType, tracks, genres } = album;
   const alias = generateAlias(name, { suffix: releaseType });
 
-  const albumExists = await prisma.$exists.album({ alias });
+  const albumExists = await prisma.album.findOne({ where: { alias } });
 
   if (albumExists) {
     throw new AlbumExistsError();
@@ -46,16 +46,17 @@ export const createAlbum = async (album, context: Context) => {
     releaseType,
     numTracks,
     duration,
+    genres: { set: genres },
     artists: {
       connect: artistsToConnect
     },
-    addedBy: {
+    uploadedBy: {
       connect: { id: getAuthenticatedUser(request).id }
     }
   };
 
   try {
-    const createdAlbum = await prisma.createAlbum({ ...payload });
+    const createdAlbum = await prisma.album.create({ data: payload });
     // Create tracks and connect them to 'createdAlbum'
     await createTracks(tracks, context, createdAlbum);
 

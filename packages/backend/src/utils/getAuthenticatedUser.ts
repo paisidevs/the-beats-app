@@ -1,9 +1,10 @@
+import { Role } from "@prisma/client";
 import { Request } from "express";
 import * as jwt from "jsonwebtoken";
 import { APP_SECRET } from "../constants";
 
 interface Token {
-  isAdmin: boolean;
+  role: Role;
   userId: string;
 }
 
@@ -24,6 +25,6 @@ export const getAuthenticatedUser = (
 
   return {
     id: decoded.userId,
-    role: decoded.isAdmin ? "ADMIN" : "SUBSCRIBER"
+    role: decoded.role
   };
 };

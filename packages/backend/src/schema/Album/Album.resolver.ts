@@ -9,32 +9,34 @@ export default {
   Mutation: {
     createAlbum: (_, { input }, context: Context) =>
       service.createAlbum(input, context),
-    deleteAlbum: (_, { id }, { prisma }: Context) => prisma.deleteAlbum({ id }),
+    deleteAlbum: (_, { id }, { prisma }: Context) =>
+      prisma.album.delete({ where: { id } })
   },
   Query: {
-    album: (_, { id }, { prisma }: Context) => prisma.album({ id }),
+    album: (_, { id }, { prisma }: Context) =>
+      prisma.album.findOne({ where: { id } }),
     albums: (_, __, { prisma }: Context) =>
-      prisma.albumsConnection({ orderBy: "name_ASC" }),
+      prisma.album.findMany({ orderBy: { name: "asc" } })
   },
   Album: {
-    addedBy: ({ id }: any, _, { prisma }: Context) => {
-      return prisma.album({ id }).addedBy();
+    uploadedBy: ({ id }: any, _, { prisma }: Context) => {
+      return prisma.album.findOne({ where: { id } }).uploadedBy();
     },
     artists: ({ id }: any, _, { prisma }: Context) => {
-      return prisma.album({ id }).artists();
+      return prisma.album.findOne({ where: { id } }).artists();
     },
     artwork: ({ id }: any, _, { prisma }: Context) => {
-      return prisma.album({ id }).artwork();
+      return prisma.album.findOne({ where: { id } }).artwork();
     },
     tracks: ({ id }: any, { orderBy }, { prisma }: Context) => {
-      return prisma
-        .album({ id })
-        .tracks({ orderBy: orderBy || "trackNumber_ASC" });
-    },
+      return prisma.album
+        .findOne({ where: { id } })
+        .tracks({ orderBy: { trackNumber: orderBy || "asc" } });
+    }
   },
   Node: {
     __resolveType() {
       return null;
-    },
-  },
+    }
+  }
 };

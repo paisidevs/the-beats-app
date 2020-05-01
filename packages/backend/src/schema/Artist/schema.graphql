@@ -1,8 +1,19 @@
-# import Artist, ArtistConnection from "../../generated/prisma.graphql"
+type Artist implements Node {
+  alias: String!
+  avatarId: String
+  createdAt: DateTime!
+  name: String
+  genres: [String]
+  id: ID!
+  avatar: Image
+  albums: [Album]
+  tracks: [Track]
+  featuresIn: [Track]
+}
 
 type Query {
   artist(id: ID!): Artist
-  artists: ArtistConnection
+  artists: [Artist]
 }
 
 type Mutation {

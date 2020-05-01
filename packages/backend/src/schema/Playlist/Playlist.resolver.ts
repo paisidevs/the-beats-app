@@ -24,21 +24,21 @@ export default {
     },
     artwork: ({ id }: any, _, { prisma }: Context) => {
       return prisma.playlist.findOne({ where: { id } }).artwork();
+    },
+    tracks: ({ id }: any, { orderBy }, { prisma }: Context) => {
+      return prisma.playlist
+        .findOne({ where: { id } })
+        .tracks({ orderBy: { addedAt: "asc" } });
     }
-    // tracks: ({ id }: any, { orderBy }, { prisma }: Context) => {
-    //   return prisma
-    //     .playlist.findOne({ where: { id } })
-    //     .tracks({ orderBy:  });
-    // }
   },
-  // PlaylistTrack: {
-  //   addedBy: ({ id }: any, _, { prisma }: Context) => {
-  //     return prisma.playlistTrack({ id }).addedBy();
-  //   },
-  //   track: ({ id }: any, _, { prisma }: Context) => {
-  //     return prisma.playlistTrack({ id }).track();
-  //   }
-  // },
+  PlaylistTrack: {
+    addedBy: ({ id }: any, _, { prisma }: Context) => {
+      return prisma.playlistTrack.findOne({ where: { id } }).addedBy();
+    },
+    track: ({ id }: any, _, { prisma }: Context) => {
+      return prisma.playlistTrack.findOne({ where: { id } }).track();
+    }
+  },
   Node: {
     __resolveType() {
       return null;

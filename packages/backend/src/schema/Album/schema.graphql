@@ -1,8 +1,33 @@
-# import Album, AlbumConnection from "../../generated/prisma.graphql"
+enum ReleaseType {
+  ALBUM
+  EP
+  LP
+  PODCAST
+  SINGLE
+}
+
+type Album implements Node {
+  alias: String!
+  artworkId: String
+  createdAt: DateTime!
+  duration: Int
+  explicit: Boolean!
+  genres: [String]
+  id: ID!
+  name: String!
+  numTracks: Int!
+  releaseDate: DateTime
+  releaseType: ReleaseType
+  uploaderId: String!
+  artwork: Image
+  uploadedBy: User!
+  tracks: [Track]
+  artists: [Artist]
+}
 
 type Query {
   album(id: ID!): Album
-  albums: AlbumConnection
+  albums: [Album]
 }
 
 type Mutation {

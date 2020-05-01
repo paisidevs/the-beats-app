@@ -1,8 +1,3 @@
-import {
-  Album,
-  TrackCreateInput,
-  TrackCreateWithoutAlbumInput
-} from "../../generated/prisma-client";
 import { Context } from "../../typings";
 import { getDuration } from "../../utils";
 import { UnknownError } from "../../utils/errors";
@@ -25,10 +20,11 @@ export const createTrack = async (
   const artistsToConnect = await createArtists(artists, context);
   const featuringToConnect = await createArtists(featuring, context);
 
-  const payload: TrackCreateInput = {
+  const payload = {
     name,
     trackNumber,
     duration: getDuration(track),
+    genre: "",
     album: {
       connect: { id: album.id }
     },
@@ -41,7 +37,7 @@ export const createTrack = async (
   };
 
   try {
-    const createdTrack = await prisma.createTrack({ ...payload });
+    const createdTrack = await prisma.track.create({ data: payload });
 
     return createdTrack;
   } catch (error) {
@@ -56,12 +52,12 @@ export const createTrack = async (
  * @param tracks - Array of tracks to create
  * @param context - Exposes prisma
  */
-export const createTracks = async (tracks, context: Context, album: Album) => {
+export const createTracks = async (tracks, context: Context, album) => {
   if (!tracks) {
     return;
   }
 
-  return new Promise<Array<TrackCreateWithoutAlbumInput>>(resolve => {
+  return new Promise<Array<any>>(resolve => {
     const createdTracks = [];
 
     tracks.forEach((track, index) => {

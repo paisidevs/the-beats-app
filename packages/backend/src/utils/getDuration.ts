@@ -1,5 +1,4 @@
-import { Track } from "../generated/prisma-client";
-
+import { Track } from "@prisma/client";
 import { timeToSeconds } from "./timeToSeconds";
 
 /**

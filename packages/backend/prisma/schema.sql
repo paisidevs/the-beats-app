@@ -34,9 +34,8 @@ CREATE TABLE "public"."Artist"
   alias VARCHAR(255) NOT NULL UNIQUE,
   "avatarId" uuid,
   "createdAt" TIMESTAMP NOT NULL DEFAULT now(),
-  "firstName" VARCHAR(255),
+  name VARCHAR(255),
   genres VARCHAR(255)[],
-  "lastName" VARCHAR(255),
   FOREIGN KEY ("avatarId") REFERENCES "public"."Image"(id)
 );
 
@@ -77,7 +76,7 @@ CREATE TABLE "public"."Track"
   "discNumber" INTEGER DEFAULT 1,
   duration INTEGER DEFAULT 0,
   explicit BOOLEAN NOT NULL DEFAULT false,
-  genre VARCHAR (255) NOT NULL,
+  genre VARCHAR (255),
   "isPlayable" BOOLEAN NOT NULL DEFAULT false,
   name VARCHAR (255) NOT NULL,
   "trackNumber" INTEGER DEFAULT 1,

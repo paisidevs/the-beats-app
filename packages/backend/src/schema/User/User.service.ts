@@ -53,8 +53,12 @@ export const updateUser = async (input, context: Context) => {
   const { prisma, request } = context;
   const authenticatedUserId = getAuthenticatedUser(request).id;
 
-  if (typeof input.password === "string") {
-    input.password = await hashPassword(input.password);
+  const userExists = await prisma.user.findOne({
+    where: { id: authenticatedUserId }
+  });
+
+  if (!userExists) {
+    throw new Error("Account doesn't exist!");
   }
 
   const payload: UserUpdateInput = input;
@@ -73,12 +77,46 @@ export const updateUser = async (input, context: Context) => {
 };
 
 /**
+ * Deletes a user
+ * @param id - ID of user to delete
+ * @param context - Exposes prisma
+ */
+export const deleteUser = async (id, context: Context) => {
+  const { prisma, request } = context;
+  const authenticatedUserId = getAuthenticatedUser(request).id;
+
+  const userExists = await prisma.user.findOne({
+    where: { id: authenticatedUserId }
+  });
+
+  if (!userExists) {
+    throw new Error("Account doesn't exist!");
+  }
+
+  if (id !== authenticatedUserId) {
+    throw new Error("Unauthorized delete operation!");
+  }
+
+  try {
+    const user = await prisma.user.delete({
+      where: { id: authenticatedUserId }
+    });
+
+    return user;
+  } catch (error) {
+    throw new UnknownError({
+      message: error.message
+    });
+  }
+};
+
+/**
  * Logs in a user
  * @param userCredentials - Object of user credentials
  * @param context - Exposes prisma
  */
 export const authenticateUser = async (
-  userCredentials,
+  userCredentials: { email: string; password: string },
   { prisma }: Context
 ) => {
   const { email, password } = userCredentials;

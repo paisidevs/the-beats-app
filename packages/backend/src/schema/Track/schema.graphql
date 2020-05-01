@@ -1,8 +1,24 @@
-# import Track, TrackConnection from "../../generated/prisma.graphql"
+type Track implements Node {
+  albumId: String!
+  audioId: String
+  createdAt: DateTime!
+  discNumber: Int
+  duration: Int
+  explicit: Boolean!
+  genre: String!
+  id: ID!
+  isPlayable: Boolean!
+  name: String!
+  trackNumber: Int
+  album: Album!
+  audio: Audio
+  artists: [Artist]
+  featuring: [Artist]
+}
 
 type Query {
   track(id: ID!): Track
-  tracks: TrackConnection
+  tracks: [Track]
 }
 
 type Mutation {

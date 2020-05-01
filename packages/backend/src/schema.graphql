@@ -4,8 +4,21 @@
 # import Query, Mutation from "./schema/Track/schema.graphql"
 # import Query, Mutation from "./schema/User/schema.graphql"
 
+scalar DateTime
 scalar Duration
 scalar NonEmptyString
+
+type Audio implements Node {
+  bitrate: Int!
+  createdAt: DateTime!
+  format: String!
+  id: ID!
+  size: Int!
+  uploaderId: String!
+  url: String!
+  uploadedBy: User!
+  Track: [Track]
+}
 
 type Image implements Node {
   createdAt: DateTime!

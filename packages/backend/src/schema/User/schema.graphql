@@ -55,5 +55,6 @@ type Query {
 type Mutation {
   createUser(input: CreateUserInput!): CognitoUser!
   updateUser(input: UpdateUserInput!): User!
+  deleteUser(id: ID!): User
   authenticateUser(input: LoginUserInput!): CognitoUser!
 }
