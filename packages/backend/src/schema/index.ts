@@ -1,10 +1,14 @@
+import { writeFileSync } from "fs";
+import { fileLoader, mergeResolvers, mergeTypes } from "merge-graphql-schemas";
 import * as path from "path";
-import { importSchema } from "graphql-import";
-import { fileLoader, mergeResolvers } from "merge-graphql-schemas";
 
 const resolversArray = fileLoader(path.join(__dirname, "./**/*.resolver.ts"), {
   recursive: true
 });
 
 export const resolvers = mergeResolvers(resolversArray);
-export const typeDefs = importSchema("./src/schema.graphql");
+export const typeDefs = mergeTypes(fileLoader(`${__dirname}/**/*.graphql`), {
+  all: true
+});
+
+writeFileSync("src/generated/schema.graphql", typeDefs);

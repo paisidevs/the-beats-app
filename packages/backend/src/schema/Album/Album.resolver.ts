@@ -19,19 +19,19 @@ export default {
       prisma.album.findMany({ orderBy: { name: "asc" } })
   },
   Album: {
-    uploadedBy: ({ id }: any, _, { prisma }: Context) => {
-      return prisma.album.findOne({ where: { id } }).uploadedBy();
-    },
     artists: ({ id }: any, _, { prisma }: Context) => {
       return prisma.album.findOne({ where: { id } }).artists();
     },
     artwork: ({ id }: any, _, { prisma }: Context) => {
       return prisma.album.findOne({ where: { id } }).artwork();
     },
-    tracks: ({ id }: any, { orderBy }, { prisma }: Context) => {
+    tracks: ({ id }: any, _, { prisma }: Context) => {
       return prisma.album
         .findOne({ where: { id } })
-        .tracks({ orderBy: { trackNumber: orderBy || "asc" } });
+        .tracks({ orderBy: { trackNumber: "asc" } });
+    },
+    uploadedBy: ({ id }: any, _, { prisma }: Context) => {
+      return prisma.album.findOne({ where: { id } }).uploadedBy();
     }
   },
   Node: {

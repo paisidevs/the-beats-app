@@ -3,6 +3,7 @@
   "description": "Music steaming PWA",
   "private": true,
   "scripts": {
+    "nuke": "lerna clean -y && rm -rf node_modules && lerna bootstrap",
     "start": "lerna run --parallel start"
   },
   "devDependencies": {

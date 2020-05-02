@@ -34,8 +34,8 @@ CREATE TABLE "public"."Artist"
   alias VARCHAR(255) NOT NULL UNIQUE,
   "avatarId" uuid,
   "createdAt" TIMESTAMP NOT NULL DEFAULT now(),
-  name VARCHAR(255),
   genres VARCHAR(255)[],
+  name VARCHAR(255),
   FOREIGN KEY ("avatarId") REFERENCES "public"."Image"(id)
 );
 
@@ -97,8 +97,8 @@ CREATE TABLE "public"."Playlist"
   name VARCHAR(255) NOT NULL,
   "numTracks" INTEGER NOT NULL DEFAULT 0,
   privacy Privacy NOT NULL DEFAULT 'PRIVATE',
-  FOREIGN KEY ("creatorId") REFERENCES "public"."User"(id),
-  FOREIGN KEY ("artworkId") REFERENCES "public"."Image"(id)
+  FOREIGN KEY ("artworkId") REFERENCES "public"."Image"(id),
+  FOREIGN KEY ("creatorId") REFERENCES "public"."User"(id)
 );
 
 CREATE TABLE "public"."PlaylistTrack"

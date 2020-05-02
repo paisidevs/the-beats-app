@@ -2,7 +2,7 @@ import { UserCreateInput, UserUpdateInput } from "@prisma/client";
 import * as bcrypt from "bcrypt";
 import { Context } from "../../typings";
 import { generateToken, getAuthenticatedUser, hashPassword } from "../../utils";
-import { UnknownError } from "../../utils/errors";
+import { ForbiddenError, UnknownError } from "../../utils/errors";
 
 /**
  * Creates a user
@@ -94,7 +94,9 @@ export const deleteUser = async (id, context: Context) => {
   }
 
   if (id !== authenticatedUserId) {
-    throw new Error("Unauthorized delete operation!");
+    throw new ForbiddenError({
+      message: "Unauthorized delete operation."
+    });
   }
 
   try {

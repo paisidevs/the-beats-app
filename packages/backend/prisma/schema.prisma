@@ -116,14 +116,14 @@ model User {
   id            String          @default(dbgenerated()) @id
   lastName      String?
   password      String
-  playlists      Playlist[]
+  playlists     Playlist[]
   role          Role?           @default(SUBSCRIBER)
   username      String          @unique
   verified      Boolean         @default(false)
   Album         Album[]
   Audio         Audio[]
   Image         Image[]
-  PlaylistTrack     PlaylistTrack[]
+  PlaylistTrack PlaylistTrack[]
 }
 
 enum Privacy {
