@@ -43,7 +43,7 @@
   "scripts": {
     "build": "react-scripts build",
     "codegen": "graphql-codegen --config codegen.yml -r dotenv/config",
-    "start": "react-scripts start",
+    "start": "npm run codegen && react-scripts start",
     "test": "react-scripts test"
   },
   "eslintConfig": {
