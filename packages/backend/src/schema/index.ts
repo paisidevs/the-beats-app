@@ -1,4 +1,3 @@
-import { writeFileSync } from "fs";
 import { fileLoader, mergeResolvers, mergeTypes } from "merge-graphql-schemas";
 import * as path from "path";
 
@@ -10,5 +9,3 @@ export const resolvers = mergeResolvers(resolversArray);
 export const typeDefs = mergeTypes(fileLoader(`${__dirname}/**/*.graphql`), {
   all: true
 });
-
-writeFileSync("src/generated/schema.graphql", typeDefs);

@@ -27,10 +27,6 @@ async function main() {
   );
 
   console.log("User created...");
-  // const user = await authenticateUser(
-  //   { email: "mpofuthandolwethu@gmail.com", password: "password" },
-  //   context
-  // );
 
   context.request = {
     headers: {

@@ -1,4 +1,4 @@
-import { UserCreateInput, UserUpdateInput } from "@prisma/client";
+import { User, UserCreateInput, UserUpdateInput } from "@prisma/client";
 import * as bcrypt from "bcrypt";
 import { Context } from "../../typings";
 import { generateToken, getAuthenticatedUser, hashPassword } from "../../utils";
@@ -9,8 +9,8 @@ import { ForbiddenError, UnknownError } from "../../utils/errors";
  * @param user - Object of user to create
  * @param context - Exposes prisma
  */
-export const createUser = async (user, { prisma }: Context) => {
-  const { email, password, username, role } = user;
+export const createUser = async (user: User, { prisma }: Context) => {
+  const { email, firstName, lastName, password, username, role } = user;
 
   const userExists = await prisma.user.findOne({ where: { email } });
 
@@ -22,6 +22,8 @@ export const createUser = async (user, { prisma }: Context) => {
 
   const payload: UserCreateInput = {
     email,
+    firstName,
+    lastName,
     password: hashedPassword,
     username: username || email,
     ...(role ? { role } : {})
