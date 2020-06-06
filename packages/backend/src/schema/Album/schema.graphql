@@ -13,7 +13,7 @@ type Album implements Node {
   duration: Int
   explicit: Boolean!
   genres: [String]
-  id: ID!
+  id: Int!
   name: String!
   numTracks: Int!
   releaseDate: DateTime
@@ -26,13 +26,13 @@ type Album implements Node {
 }
 
 type Query {
-  album(id: ID!): Album
+  album(id: Int!): Album
   albums: [Album]
 }
 
 type Mutation {
   createAlbum(input: AlbumCreatePayload!): Album
-  deleteAlbum(id: ID!): Album
+  deleteAlbum(id: Int!): Album
 }
 
 input ArtistPayload {

@@ -6,7 +6,7 @@ type Track implements Node {
   duration: Int
   explicit: Boolean!
   genre: String!
-  id: ID!
+  id: Int!
   isPlayable: Boolean!
   name: String!
   trackNumber: Int
@@ -17,7 +17,7 @@ type Track implements Node {
 }
 
 type Query {
-  track(id: ID!): Track
+  track(id: Int!): Track
   tracks: [Track]
 }
 

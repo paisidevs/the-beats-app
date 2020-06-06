@@ -47,7 +47,7 @@ export const createArtists = async (artists, context: Context) => {
     return [];
   }
 
-  return new Promise<Array<{ id: string }>>(resolve => {
+  return new Promise<Array<{ id: number }>>(resolve => {
     const createdArtists = [];
 
     artists.forEach((artist, index) => {

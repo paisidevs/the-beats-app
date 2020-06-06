@@ -7,7 +7,7 @@ enum Privacy {
 type PlaylistTrack implements Node {
   addedAt: DateTime!
   addedById: String!
-  id: ID!
+  id: Int!
   playlistId: String!
   trackId: String!
   addedBy: User!
@@ -16,13 +16,13 @@ type PlaylistTrack implements Node {
 }
 
 type Playlist implements Node {
-  id: ID!
+  id: Int!
   alias: String!
   artwork: Image
   collaborative: Boolean!
   createdAt: DateTime!
   creator: User!
-  creatorId: ID!
+  creatorId: Int!
   description: String
   duration: Int!
   name: String!
@@ -33,16 +33,16 @@ type Playlist implements Node {
 
 input CreatePlaylistInput {
   name: NonEmptyString!
-  trackId: ID
+  trackId: Int
 }
 
 input AddToPlaylistInput {
-  playlistId: ID!
-  trackId: ID!
+  playlistId: Int!
+  trackId: Int!
 }
 
 type Query {
-  playlist(id: ID!): Playlist
+  playlist(id: Int!): Playlist
   playlists: [Playlist]
 }
 

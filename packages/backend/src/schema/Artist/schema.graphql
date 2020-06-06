@@ -4,7 +4,7 @@ type Artist implements Node {
   createdAt: DateTime!
   name: String
   genres: [String]
-  id: ID!
+  id: Int!
   avatar: Image
   albums: [Album]
   tracks: [Track]
@@ -12,7 +12,7 @@ type Artist implements Node {
 }
 
 type Query {
-  artist(id: ID!): Artist
+  artist(id: Int!): Artist
   artists: [Artist]
 }
 

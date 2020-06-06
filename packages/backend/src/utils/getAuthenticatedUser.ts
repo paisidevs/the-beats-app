@@ -5,7 +5,7 @@ import { APP_SECRET } from "../constants";
 
 interface Token {
   role: Role;
-  userId: string;
+  userId: number;
 }
 
 /**
@@ -13,7 +13,7 @@ interface Token {
  */
 export const getAuthenticatedUser = (
   request: Request
-): { id: string; role: string } => {
+): { id: number; role: string } => {
   const authorization = request.headers.authorization;
 
   if (!authorization) {

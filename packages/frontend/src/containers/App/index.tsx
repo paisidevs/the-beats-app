@@ -1,7 +1,7 @@
-import { Box, ErrorBoundary, Grid, Routes } from '@paisidevs/tra-components';
-import { Global, ThemeProvider } from '@paisidevs/tra-theme';
-import React, { FC } from 'react';
-import { routes } from './routes';
+import { Box, ErrorBoundary, Grid, Routes } from "@paisidevs/tra-components";
+import { Global, ThemeProvider } from "@paisidevs/tra-theme";
+import React, { FC } from "react";
+import { routes } from "./routes";
 
 const App: FC = () => {
   const renderApp = () => {
@@ -19,9 +19,9 @@ const App: FC = () => {
   return (
     <ThemeProvider>
       <Grid
-        backgroundColor="background.base"
+        backgroundColor="background.surface"
         color="text.default"
-        gridTemplateRows={['auto 1fr auto', 'auto 1fr auto']}
+        gridTemplateRows="1fr"
         height="100%"
         overflow="hidden"
       >

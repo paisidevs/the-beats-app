@@ -1,0 +1,7 @@
+#import '../fragments/album.graphql'
+
+query albums {
+  albums {
+    ...album
+  }
+}

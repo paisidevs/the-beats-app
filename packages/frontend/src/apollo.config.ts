@@ -2,7 +2,6 @@ import {
   ApolloClient,
   errorLink,
   from,
-  gql,
   HttpLink,
   InMemoryCache,
   loggerLink,
@@ -12,9 +11,12 @@ import {
 import { persistCache } from "apollo-cache-persist";
 import { PersistentStorage } from "apollo-cache-persist/types";
 import { GRAPHQL_ENDPOINT, NODE_ENV } from "./constants";
+import introspectionResult from "./fragment-matcher";
 import { getCognitoUserToken } from "./utilities";
 
-const cache = new InMemoryCache();
+const cache = new InMemoryCache({
+  possibleTypes: introspectionResult.possibleTypes,
+});
 
 const httpLink = new HttpLink({
   uri: GRAPHQL_ENDPOINT,
@@ -37,13 +39,11 @@ const retryLink = new RetryLink();
 let clientLink = from([retryLink, authLink, httpLink]);
 
 if (NODE_ENV === "development") {
-  // @ts-ignore - tra-apollo types compatibility issues
   clientLink = from([loggerLink, errorLink, clientLink]);
 }
 
 export const client = new ApolloClient({
   cache,
-  // @ts-ignore - tra-apollo types compatibility issues
   link: clientLink,
 });
 
@@ -55,14 +55,3 @@ export const persistedClient = async () => {
 
   return client;
 };
-
-cache.writeQuery({
-  query: gql`
-    query {
-      todos
-    }
-  `,
-  data: {
-    todos: [],
-  },
-});

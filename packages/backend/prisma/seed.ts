@@ -17,11 +17,8 @@ async function main() {
   const user = await createUser(
     {
       email: "mpofuthandolwethu@gmail.com",
-      firstName: "Thandolwethu",
-      lastName: "Mpofu",
       password: "password",
-      role: "ADMIN",
-      username: "elandamor"
+      role: "ADMIN"
     },
     context
   );

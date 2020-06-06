@@ -1,0 +1,4 @@
+fragment album on Album {
+  id
+  name
+}

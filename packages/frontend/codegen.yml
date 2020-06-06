@@ -1,20 +1,27 @@
+watch: true
 overwrite: true
 schema:
-  - ${CLIENT_SCHEMA}
+  - "../backend/src/schema/**/*.graphql"
 documents:
-  - 'src/graphql/**/*.graphql'
-  - '!src/graphql/schema.graphql'
+  - "src/graphql/**/*.graphql"
 generates:
   src/generated/graphql.tsx:
     plugins:
-      - 'typescript'
-      - 'typescript-operations'
-      - 'typescript-react-apollo'
+      - add: "// THIS FILE IS GENERATED, DO NOT EDIT!"
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
     config:
       apolloReactCommonImportFrom: @apollo/client
       apolloReactHooksImportFrom: @apollo/client
-      gqlImport: '@apollo/client#gql'
+      gqlImport: "@apollo/client#gql"
       withHOC: false
       withComponent: false
       withHooks: true
       withSubscriptionHooks: true
+  src/fragment-matcher.ts:
+    plugins:
+      - fragment-matcher
+    config:
+      apolloClientVersion: 3
+      useExplicitTyping: true

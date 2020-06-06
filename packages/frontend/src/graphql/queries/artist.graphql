@@ -1,0 +1,7 @@
+#import '../fragments/artist.graphql'
+
+query artists {
+  artists {
+    ...artist
+  }
+}
