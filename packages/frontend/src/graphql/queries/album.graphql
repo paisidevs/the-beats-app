@@ -1,0 +1,13 @@
+#import '../fragments/album.graphql'
+
+query albums {
+  albums {
+    ...album
+  }
+}
+
+query album($id: ID!) {
+  album(id: $id) {
+    ...album
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "artists",
+  "info": {
+    "name": "Artist"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "alias": {
+      "type": "string",
+      "unique": true
+    },
+    "avatar": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "albums": {
+      "via": "artists",
+      "collection": "album"
+    },
+    "featuresIn": {
+      "via": "featuring",
+      "collection": "track"
+    },
+    "tracks": {
+      "via": "artists",
+      "collection": "track"
+    }
+  }
+}

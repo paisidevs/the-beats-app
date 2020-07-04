@@ -1,0 +1,146 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Album {
+  alias       String       @unique
+  artworkId   Int?
+  createdAt   DateTime     @default(now())
+  duration    Int?         @default(0)
+  explicit    Boolean      @default(false)
+  genres      String[]
+  id          Int          @default(autoincrement()) @id
+  name        String
+  numTracks   Int          @default(0)
+  releaseDate DateTime?
+  releaseType ReleaseType?
+  uploaderId  Int
+  artwork     Image?       @relation(fields: [artworkId], references: [id])
+  uploadedBy  User         @relation(fields: [uploaderId], references: [id])
+  tracks      Track[]
+  artists     Artist[]     @relation("AlbumCreatedBy", references: [id])
+}
+
+model Artist {
+  alias      String   @unique
+  avatarId   Int?
+  createdAt  DateTime @default(now())
+  name       String
+  genres     String[]
+  id         Int      @default(autoincrement()) @id
+  avatar     Image?   @relation(fields: [avatarId], references: [id])
+  albums     Album[]  @relation("AlbumCreatedBy", references: [id])
+  tracks     Track[]  @relation("ByArtist", references: [id])
+  featuresIn Track[]  @relation("FeaturesIn", references: [id])
+}
+
+model Audio {
+  bitrate    Int
+  createdAt  DateTime @default(now())
+  format     String
+  id         Int      @default(autoincrement()) @id
+  size       Int
+  uploaderId Int
+  url        String
+  uploadedBy User     @relation(fields: [uploaderId], references: [id])
+  Track      Track[]
+}
+
+model Image {
+  createdAt  DateTime   @default(now())
+  id         Int        @default(autoincrement()) @id
+  uploaderId Int
+  url        String
+  uploadedBy User       @relation(fields: [uploaderId], references: [id])
+  Album      Album[]
+  Artist     Artist[]
+  Playlist   Playlist[]
+}
+
+model Playlist {
+  alias         String          @unique
+  artworkId     Int?
+  collaborative Boolean         @default(false)
+  createdAt     DateTime        @default(now())
+  creatorId     Int
+  description   String?
+  duration      Int             @default(0)
+  id            Int             @default(autoincrement()) @id
+  name          String
+  numTracks     Int             @default(0)
+  privacy       Privacy         @default(PRIVATE)
+  artwork       Image?          @relation(fields: [artworkId], references: [id])
+  creator       User            @relation(fields: [creatorId], references: [id])
+  tracks        PlaylistTrack[]
+}
+
+model PlaylistTrack {
+  addedAt    DateTime @default(now())
+  addedById  Int
+  id         Int      @default(autoincrement()) @id
+  playlistId Int
+  trackId    Int
+  addedBy    User     @relation(fields: [addedById], references: [id])
+  playlist   Playlist @relation(fields: [playlistId], references: [id])
+  track      Track    @relation(fields: [trackId], references: [id])
+}
+
+model Track {
+  albumId       Int
+  audioId       Int?
+  createdAt     DateTime        @default(now())
+  discNumber    Int?            @default(1)
+  duration      Int?            @default(0)
+  explicit      Boolean         @default(false)
+  genre         String?
+  id            Int             @default(autoincrement()) @id
+  isPlayable    Boolean         @default(false)
+  name          String
+  trackNumber   Int?            @default(1)
+  album         Album           @relation(fields: [albumId], references: [id])
+  audio         Audio?          @relation(fields: [audioId], references: [id])
+  PlaylistTrack PlaylistTrack[]
+  artists       Artist[]        @relation("ByArtist", references: [id])
+  featuring     Artist[]        @relation("FeaturesIn", references: [id])
+}
+
+model User {
+  createdAt     DateTime        @default(now())
+  email         String          @unique
+  firstName     String?
+  id            Int             @default(autoincrement()) @id
+  lastName      String?
+  password      String
+  playlists     Playlist[]
+  role          Role?           @default(SUBSCRIBER)
+  username      String          @unique
+  verified      Boolean         @default(false)
+  Album         Album[]
+  Audio         Audio[]
+  Image         Image[]
+  PlaylistTrack PlaylistTrack[]
+}
+
+enum Privacy {
+  PRIVATE
+  PUBLIC
+  UNLISTED
+}
+
+enum ReleaseType {
+  ALBUM
+  EP
+  LP
+  PODCAST
+  SINGLE
+}
+
+enum Role {
+  ADMIN
+  SUBSCRIBER
+}

@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tracks",
+  "info": {
+    "name": "track"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "explicit": {
+      "type": "boolean"
+    },
+    "duration": {
+      "type": "integer",
+      "default": 0
+    },
+    "album": {
+      "via": "tracks",
+      "model": "album"
+    },
+    "trackNumber": {
+      "type": "integer"
+    },
+    "discNumber": {
+      "type": "integer"
+    },
+    "isPlayable": {
+      "type": "boolean",
+      "default": true
+    },
+    "artists": {
+      "collection": "artist",
+      "via": "tracks",
+      "dominant": true
+    },
+    "featuring": {
+      "collection": "artist",
+      "via": "featuresIn",
+      "dominant": true
+    },
+    "audio": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "albums",
+  "info": {
+    "name": "album"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "releaseDate": {
+      "type": "date"
+    },
+    "artists": {
+      "collection": "artist",
+      "via": "albums",
+      "dominant": true
+    },
+    "tracks": {
+      "collection": "track",
+      "via": "album"
+    },
+    "alias": {
+      "type": "string"
+    },
+    "artwork": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "explicit": {
+      "type": "boolean",
+      "default": false
+    },
+    "releaseType": {
+      "type": "enumeration",
+      "enum": [
+        "Album",
+        "EP",
+        "LP",
+        "Podcast",
+        "Single"
+      ]
+    }
+  }
+}

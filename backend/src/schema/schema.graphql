@@ -1,0 +1,34 @@
+scalar DateTime
+scalar Duration
+scalar NonEmptyString
+
+enum ReleaseType {
+  ALBUM
+  EP
+  LP
+  PODCAST
+  SINGLE
+}
+
+interface Node {
+  id: Int!
+}
+
+type Audio implements Node {
+  id: Int!
+  bitrate: Int!
+  createdAt: DateTime!
+  format: String!
+  size: Int!
+  uploadedBy: User!
+  uploaderId: String!
+  url: String!
+}
+
+type Image implements Node {
+  id: Int!
+  createdAt: DateTime!
+  uploadedBy: User!
+  uploaderId: String!
+  url: String!
+}

@@ -1,0 +1,52 @@
+enum Privacy {
+  PRIVATE
+  PUBLIC
+  UNLISTED
+}
+
+type PlaylistTrack implements Node {
+  addedAt: DateTime!
+  addedById: String!
+  id: Int!
+  playlistId: String!
+  trackId: String!
+  addedBy: User!
+  playlist: Playlist!
+  track: Track!
+}
+
+type Playlist implements Node {
+  id: Int!
+  alias: String!
+  artwork: Image
+  collaborative: Boolean!
+  createdAt: DateTime!
+  creator: User!
+  creatorId: Int!
+  description: String
+  duration: Int!
+  name: String!
+  numTracks: Int!
+  privacy: Privacy!
+  tracks: [PlaylistTrack]
+}
+
+input CreatePlaylistInput {
+  name: NonEmptyString!
+  trackId: Int
+}
+
+input AddToPlaylistInput {
+  playlistId: Int!
+  trackId: Int!
+}
+
+type Query {
+  playlist(id: Int!): Playlist
+  playlists: [Playlist]
+}
+
+type Mutation {
+  addToPlaylist(input: AddToPlaylistInput!): Playlist
+  createPlaylist(input: CreatePlaylistInput!): Playlist
+}

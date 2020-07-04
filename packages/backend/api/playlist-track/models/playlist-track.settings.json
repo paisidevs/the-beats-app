@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "playlist_tracks",
+  "info": {
+    "name": "playlistTrack"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "addedBy": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "track": {
+      "model": "track"
+    }
+  }
+}
