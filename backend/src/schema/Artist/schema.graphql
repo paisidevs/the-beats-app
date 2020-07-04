@@ -1,14 +1,14 @@
 type Artist implements Node {
+  albums: [Album]
   alias: String!
+  avatar: Image
   avatarId: String
   createdAt: DateTime!
-  name: String
+  featuresIn: [Track]
   genres: [String]
   id: Int!
-  avatar: Image
-  albums: [Album]
+  name: String
   tracks: [Track]
-  featuresIn: [Track]
 }
 
 type Query {

@@ -1,1 +1,2 @@
-export { useAuthentication } from './useAuthentication';
+export { useAnimations } from "./useAnimations";
+export { useAuthentication } from "./useAuthentication";

@@ -5,3 +5,9 @@ query albums {
     ...album
   }
 }
+
+query album($id: ID!) {
+  album(id: $id) {
+    ...album
+  }
+}

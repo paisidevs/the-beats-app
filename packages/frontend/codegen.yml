@@ -1,7 +1,7 @@
 watch: true
 overwrite: true
 schema:
-  - "../backend/src/schema/**/*.graphql"
+  - ${REACT_APP_GRAPHQL_ENDPOINT}
 documents:
   - "src/graphql/**/*.graphql"
 generates:
@@ -12,8 +12,8 @@ generates:
       - "typescript-operations"
       - "typescript-react-apollo"
     config:
-      apolloReactCommonImportFrom: @apollo/client
-      apolloReactHooksImportFrom: @apollo/client
+      apolloReactCommonImportFrom: "@apollo/client"
+      apolloReactHooksImportFrom: "@apollo/client"
       gqlImport: "@apollo/client#gql"
       withHOC: false
       withComponent: false

@@ -1,7 +1,13 @@
 #import '../fragments/artist.graphql'
 
-query artists {
-  artists {
+query artists($sort: String) {
+  artists(sort: $sort) {
+    ...artist
+  }
+}
+
+query artist($id: ID!) {
+  artist(id: $id) {
     ...artist
   }
 }

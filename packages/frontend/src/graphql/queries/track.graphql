@@ -1,0 +1,13 @@
+#import '../fragments/track.graphql'
+
+query tracks($sort: String) {
+  tracks(sort: $sort) {
+    ...track
+  }
+}
+
+query track($id: ID!) {
+  track(id: $id) {
+    ...track
+  }
+}
