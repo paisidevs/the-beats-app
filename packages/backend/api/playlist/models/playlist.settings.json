@@ -28,9 +28,9 @@
       "default": false
     },
     "creator": {
-      "via": "playlists",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "playlists"
     },
     "description": {
       "type": "text"
@@ -55,6 +55,7 @@
       "default": "Private"
     },
     "tracks": {
+      "via": "playlist",
       "collection": "playlist-track"
     }
   }

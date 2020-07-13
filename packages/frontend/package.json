@@ -9,7 +9,7 @@
     "@graphql-codegen/introspection": "1.16.0",
     "@graphql-codegen/typescript": "1.16.0",
     "@graphql-codegen/typescript-operations": "1.16.0",
-    "@graphql-codegen/typescript-react-apollo": "1.15.4",
+    "@graphql-codegen/typescript-react-apollo": "1.16.0",
     "@paisidevs/tra-apollo": "latest",
     "@paisidevs/tra-components": "latest",
     "@paisidevs/tra-hooks": "latest",

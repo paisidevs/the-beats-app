@@ -1,31 +1,31 @@
 {
   "_args": [
     [
-      "strapi-plugin-graphql@3.0.1",
+      "strapi-plugin-graphql@3.0.5",
       "/Users/elandamor/Workspace/Web/Personal/the-beats-app/packages/backend"
     ]
   ],
-  "_from": "strapi-plugin-graphql@3.0.1",
-  "_id": "strapi-plugin-graphql@3.0.1",
+  "_from": "strapi-plugin-graphql@3.0.5",
+  "_id": "strapi-plugin-graphql@3.0.5",
   "_inBundle": false,
-  "_integrity": "sha512-f+JSiH6VIEKW1o6lIDQRF5t7dZ1eWs2iIpEQ4ohgPPRN5iViN3drKD4kY5mB1G66BzsZZyJ8ek0/0qZRf+6Opg==",
+  "_integrity": "sha512-OxXOOTMe1da1nb3te/1jC8MoiP99U66mbvUczevMt2hDxHu1ZD03mj+vxitD8WVkOLX6AxbUQSwDRAomjgWs1Q==",
   "_location": "/strapi-plugin-graphql",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "strapi-plugin-graphql@3.0.1",
+    "raw": "strapi-plugin-graphql@3.0.5",
     "name": "strapi-plugin-graphql",
     "escapedName": "strapi-plugin-graphql",
-    "rawSpec": "3.0.1",
+    "rawSpec": "3.0.5",
     "saveSpec": null,
-    "fetchSpec": "3.0.1"
+    "fetchSpec": "3.0.5"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-graphql/-/strapi-plugin-graphql-3.0.1.tgz",
-  "_spec": "3.0.1",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-graphql/-/strapi-plugin-graphql-3.0.5.tgz",
+  "_spec": "3.0.5",
   "_where": "/Users/elandamor/Workspace/Web/Personal/the-beats-app/packages/backend",
   "author": {
     "name": "A Strapi developer"
@@ -44,7 +44,7 @@
     "koa-compose": "^4.1.0",
     "lodash": "4.17.12",
     "pluralize": "^7.0.0",
-    "strapi-utils": "3.0.1"
+    "strapi-utils": "3.0.5"
   },
   "description": "This is the description of the plugin.",
   "devDependencies": {
@@ -53,10 +53,10 @@
     "rimraf": "3.0.0"
   },
   "engines": {
-    "node": ">=10.0.0",
+    "node": ">=10.10.0",
     "npm": ">=6.0.0"
   },
-  "gitHead": "5b64e05d7f565d359f28dccb9d9917124d1ad453",
+  "gitHead": "eaf40e1ada08f9a72bf94faf43c959a0a4d6c8a3",
   "license": "MIT",
   "maintainers": [
     {
@@ -72,5 +72,5 @@
     "icon": "plug",
     "description": "Description of graphql plugin."
   },
-  "version": "3.0.1"
+  "version": "3.0.5"
 }

@@ -1,17 +1,17 @@
 {
   "_args": [
     [
-      "strapi-plugin-content-type-builder@3.0.1",
+      "strapi-plugin-content-type-builder@3.0.5",
       "/Users/elandamor/Workspace/Web/Personal/the-beats-app/packages/backend"
     ]
   ],
-  "_from": "strapi-plugin-content-type-builder@3.0.1",
-  "_id": "strapi-plugin-content-type-builder@3.0.1",
+  "_from": "strapi-plugin-content-type-builder@3.0.5",
+  "_id": "strapi-plugin-content-type-builder@3.0.5",
   "_inBundle": false,
-  "_integrity": "sha512-ZSNba2kJgWGeYcLYHESHsSG8sjisOsdqtd5Puf1LzGuknHWo1dUGCK4biUiYqpoVlb8iXp4Ym8YYEavv3b5cZQ==",
+  "_integrity": "sha512-Bs7P2TobHV4TLJeQ+k8ZLoiGbDk8/ElVsTB43lfx0yZV3z0TlMfGT7pDgrVqkV2l84ARdU5bYVLofR3Zmj+KCw==",
   "_location": "/strapi-plugin-content-type-builder",
   "_phantomChildren": {
-    "@babel/runtime": "7.10.2",
+    "@babel/runtime": "7.10.4",
     "escape-string-regexp": "1.0.5",
     "fn-name": "2.0.1",
     "lodash": "4.17.15",
@@ -23,18 +23,18 @@
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "strapi-plugin-content-type-builder@3.0.1",
+    "raw": "strapi-plugin-content-type-builder@3.0.5",
     "name": "strapi-plugin-content-type-builder",
     "escapedName": "strapi-plugin-content-type-builder",
-    "rawSpec": "3.0.1",
+    "rawSpec": "3.0.5",
     "saveSpec": null,
-    "fetchSpec": "3.0.1"
+    "fetchSpec": "3.0.5"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-content-type-builder/-/strapi-plugin-content-type-builder-3.0.1.tgz",
-  "_spec": "3.0.1",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-content-type-builder/-/strapi-plugin-content-type-builder-3.0.5.tgz",
+  "_spec": "3.0.5",
   "_where": "/Users/elandamor/Workspace/Web/Personal/the-beats-app/packages/backend",
   "author": {
     "name": "Strapi team",
@@ -52,7 +52,7 @@
     "pluralize": "^7.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-intl": "^4.5.0",
+    "react-intl": "4.5.0",
     "react-redux": "7.2.0",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
@@ -60,18 +60,18 @@
     "redux": "^4.0.1",
     "redux-immutable": "^4.0.0",
     "reselect": "^4.0.0",
-    "strapi-generate": "3.0.1",
-    "strapi-generate-api": "3.0.1",
-    "strapi-helper-plugin": "3.0.0",
-    "strapi-utils": "3.0.1",
+    "strapi-generate": "3.0.5",
+    "strapi-generate-api": "3.0.5",
+    "strapi-helper-plugin": "3.0.5",
+    "strapi-utils": "3.0.5",
     "yup": "^0.27.0"
   },
   "description": "Strapi plugin to create content type (API).",
   "engines": {
-    "node": ">=10.0.0",
+    "node": ">=10.10.0",
     "npm": ">=6.0.0"
   },
-  "gitHead": "5b64e05d7f565d359f28dccb9d9917124d1ad453",
+  "gitHead": "eaf40e1ada08f9a72bf94faf43c959a0a4d6c8a3",
   "homepage": "https://github.com/strapi/strapi#readme",
   "license": "MIT",
   "maintainers": [
@@ -91,5 +91,5 @@
     "icon": "paint-brush",
     "description": "content-type-builder.plugin.description"
   },
-  "version": "3.0.1"
+  "version": "3.0.5"
 }

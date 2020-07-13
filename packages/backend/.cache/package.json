@@ -1,42 +1,47 @@
 {
   "_args": [
     [
-      "strapi-admin@3.0.1",
+      "strapi-admin@3.0.5",
       "/Users/elandamor/Workspace/Web/Personal/the-beats-app/packages/backend"
     ]
   ],
-  "_from": "strapi-admin@3.0.1",
-  "_id": "strapi-admin@3.0.1",
+  "_from": "strapi-admin@3.0.5",
+  "_id": "strapi-admin@3.0.5",
   "_inBundle": false,
-  "_integrity": "sha512-xEa5y2AJWpmQwnE+CBoj9HOWS5/5CSMDpgUmv/7t1xa/5z+i7D+zgNN27LjTtkrHl1Iqio5nfBCANV/R6zhrLw==",
+  "_integrity": "sha512-3om11BvQ2vu2IeJy+IRP8H0bBr3wo/iXNnlRTWIxVSE71go3WSG09j6+c0kTReOI+S8OZukzDHm8+F4OTFMqvg==",
   "_location": "/strapi-admin",
   "_phantomChildren": {
-    "@babel/runtime": "7.10.2",
+    "@babel/runtime": "7.10.4",
     "fn-name": "2.0.1",
     "glob": "7.1.6",
-    "interpret": "1.4.0",
     "is-docker": "2.0.0",
+    "isexe": "2.0.0",
     "lodash": "4.17.15",
+    "nice-try": "1.0.5",
+    "p-finally": "1.0.0",
     "property-expr": "1.5.1",
+    "pump": "3.0.0",
     "rechoir": "0.6.2",
+    "signal-exit": "3.0.3",
+    "strip-eof": "1.0.0",
     "synchronous-promise": "2.0.13",
     "toposort": "2.0.2"
   },
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "strapi-admin@3.0.1",
+    "raw": "strapi-admin@3.0.5",
     "name": "strapi-admin",
     "escapedName": "strapi-admin",
-    "rawSpec": "3.0.1",
+    "rawSpec": "3.0.5",
     "saveSpec": null,
-    "fetchSpec": "3.0.1"
+    "fetchSpec": "3.0.5"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-admin/-/strapi-admin-3.0.1.tgz",
-  "_spec": "3.0.1",
+  "_resolved": "https://registry.npmjs.org/strapi-admin/-/strapi-admin-3.0.5.tgz",
+  "_spec": "3.0.5",
   "_where": "/Users/elandamor/Workspace/Web/Personal/the-beats-app/packages/backend",
   "author": {
     "name": "Strapi"
@@ -100,7 +105,7 @@
     "react-dnd-html5-backend": "^10.0.2",
     "react-dom": "^16.9.0",
     "react-helmet": "^6.0.0",
-    "react-intl": "^4.5.0",
+    "react-intl": "4.5.0",
     "react-is": "^16.12.0",
     "react-loadable": "^5.5.0",
     "react-redux": "7.2.0",
@@ -117,8 +122,8 @@
     "reselect": "^4.0.0",
     "sanitize.css": "^4.1.0",
     "shelljs": "^0.7.8",
-    "strapi-helper-plugin": "3.0.0",
-    "strapi-utils": "3.0.1",
+    "strapi-helper-plugin": "3.0.5",
+    "strapi-utils": "3.0.5",
     "style-loader": "^0.23.1",
     "styled-components": "^5.0.0",
     "terser-webpack-plugin": "^1.2.3",
@@ -132,10 +137,10 @@
   },
   "description": "Strapi Admin",
   "engines": {
-    "node": ">=10.0.0",
+    "node": ">=10.10.0",
     "npm": ">=6.0.0"
   },
-  "gitHead": "5b64e05d7f565d359f28dccb9d9917124d1ad453",
+  "gitHead": "eaf40e1ada08f9a72bf94faf43c959a0a4d6c8a3",
   "homepage": "https://github.com/strapi/strapi-admin#readme",
   "license": "MIT",
   "main": "index.js",
@@ -153,5 +158,5 @@
     "develop": "webpack-dev-server --config webpack.config.dev.js",
     "test": "echo \"no tests yet\""
   },
-  "version": "3.0.1"
+  "version": "3.0.5"
 }

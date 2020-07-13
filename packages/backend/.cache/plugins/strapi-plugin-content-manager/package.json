@@ -1,17 +1,17 @@
 {
   "_args": [
     [
-      "strapi-plugin-content-manager@3.0.1",
+      "strapi-plugin-content-manager@3.0.5",
       "/Users/elandamor/Workspace/Web/Personal/the-beats-app/packages/backend"
     ]
   ],
-  "_from": "strapi-plugin-content-manager@3.0.1",
-  "_id": "strapi-plugin-content-manager@3.0.1",
+  "_from": "strapi-plugin-content-manager@3.0.5",
+  "_id": "strapi-plugin-content-manager@3.0.5",
   "_inBundle": false,
-  "_integrity": "sha512-/e1hTR+7MfXkIgItf2tlD6dRqquNamq9lmy9wzIoUJ60S0aZL18FTWPfI4zZ5gj5J0JkIlY5YOxqnyTpGiLKQA==",
+  "_integrity": "sha512-Vs8u/O8YU2iH+oAJnlhB1bpuuBnbPXEKfxdxB8yg5AXHQSUNmbctteWVUrQvC3q87opLyaM0C2y7uugZAhxnwg==",
   "_location": "/strapi-plugin-content-manager",
   "_phantomChildren": {
-    "@babel/runtime": "7.10.2",
+    "@babel/runtime": "7.10.4",
     "escape-string-regexp": "1.0.5",
     "fn-name": "2.0.1",
     "lodash": "4.17.15",
@@ -23,18 +23,18 @@
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "strapi-plugin-content-manager@3.0.1",
+    "raw": "strapi-plugin-content-manager@3.0.5",
     "name": "strapi-plugin-content-manager",
     "escapedName": "strapi-plugin-content-manager",
-    "rawSpec": "3.0.1",
+    "rawSpec": "3.0.5",
     "saveSpec": null,
-    "fetchSpec": "3.0.1"
+    "fetchSpec": "3.0.5"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-content-manager/-/strapi-plugin-content-manager-3.0.1.tgz",
-  "_spec": "3.0.1",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-content-manager/-/strapi-plugin-content-manager-3.0.5.tgz",
+  "_spec": "3.0.5",
   "_where": "/Users/elandamor/Workspace/Web/Personal/the-beats-app/packages/backend",
   "author": {
     "name": "Strapi team",
@@ -54,7 +54,7 @@
     "pluralize": "^7.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-intl": "^4.5.0",
+    "react-intl": "4.5.0",
     "react-redux": "^7.0.2",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
@@ -63,16 +63,16 @@
     "redux-immutable": "^4.0.0",
     "reselect": "^4.0.0",
     "showdown": "^1.9.0",
-    "strapi-helper-plugin": "3.0.0",
-    "strapi-utils": "3.0.1",
+    "strapi-helper-plugin": "3.0.5",
+    "strapi-utils": "3.0.5",
     "yup": "^0.27.0"
   },
   "description": "A powerful UI to easily manage your data.",
   "engines": {
-    "node": ">=10.0.0",
+    "node": ">=10.10.0",
     "npm": ">=6.0.0"
   },
-  "gitHead": "5b64e05d7f565d359f28dccb9d9917124d1ad453",
+  "gitHead": "eaf40e1ada08f9a72bf94faf43c959a0a4d6c8a3",
   "homepage": "https://github.com/strapi/strapi#readme",
   "license": "MIT",
   "maintainers": [
@@ -93,5 +93,5 @@
     "description": "content-manager.plugin.description",
     "required": true
   },
-  "version": "3.0.1"
+  "version": "3.0.5"
 }

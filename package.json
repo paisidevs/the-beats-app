@@ -3,7 +3,7 @@
   "description": "Music steaming PWA",
   "private": true,
   "scripts": {
-    "nuke": "lerna clean -y && rm -rf node_modules && lerna bootstrap",
+    "nuke": "lerna clean -y && rm -rf node_modules && set -o allexport; source .env; set +o allexport && lerna bootstrap",
     "seed": "docker exec -it prisma ts-node ./packages/backend/prisma/seed.ts",
     "start": "lerna run --parallel start"
   },

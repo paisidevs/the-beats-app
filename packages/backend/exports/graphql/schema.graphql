@@ -342,6 +342,7 @@ input editPlaylistInput {
 input editPlaylistTrackInput {
   addedBy: ID
   track: ID
+  playlist: ID
 }
 
 input editRoleInput {
@@ -417,7 +418,7 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Album | AlbumConnection | AlbumAggregator | AlbumGroupBy | AlbumConnectionId | AlbumConnectionCreated_at | AlbumConnectionUpdated_at | AlbumConnectionName | AlbumConnectionReleaseDate | AlbumConnectionAlias | AlbumConnectionArtwork | AlbumConnectionExplicit | AlbumConnectionReleaseType | createAlbumPayload | updateAlbumPayload | deleteAlbumPayload | Artist | ArtistConnection | ArtistAggregator | ArtistGroupBy | ArtistConnectionId | ArtistConnectionCreated_at | ArtistConnectionUpdated_at | ArtistConnectionName | ArtistConnectionAlias | ArtistConnectionAvatar | createArtistPayload | updateArtistPayload | deleteArtistPayload | PlaylistTrack | PlaylistTrackConnection | PlaylistTrackAggregator | PlaylistTrackGroupBy | PlaylistTrackConnectionId | PlaylistTrackConnectionCreated_at | PlaylistTrackConnectionUpdated_at | PlaylistTrackConnectionAddedBy | PlaylistTrackConnectionTrack | createPlaylistTrackPayload | updatePlaylistTrackPayload | deletePlaylistTrackPayload | Playlist | PlaylistConnection | PlaylistAggregator | PlaylistAggregatorSum | PlaylistAggregatorAvg | PlaylistAggregatorMin | PlaylistAggregatorMax | PlaylistGroupBy | PlaylistConnectionId | PlaylistConnectionCreated_at | PlaylistConnectionUpdated_at | PlaylistConnectionAlias | PlaylistConnectionArtwork | PlaylistConnectionCollaborative | PlaylistConnectionCreator | PlaylistConnectionDescription | PlaylistConnectionDuration | PlaylistConnectionName | PlaylistConnectionNumTracks | PlaylistConnectionPrivacy | createPlaylistPayload | updatePlaylistPayload | deletePlaylistPayload | Track | TrackConnection | TrackAggregator | TrackAggregatorSum | TrackAggregatorAvg | TrackAggregatorMin | TrackAggregatorMax | TrackGroupBy | TrackConnectionId | TrackConnectionCreated_at | TrackConnectionUpdated_at | TrackConnectionName | TrackConnectionExplicit | TrackConnectionDuration | TrackConnectionAlbum | TrackConnectionTrackNumber | TrackConnectionDiscNumber | TrackConnectionIsPlayable | TrackConnectionAudio | createTrackPayload | updateTrackPayload | deleteTrackPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Album | AlbumConnection | AlbumAggregator | AlbumGroupBy | AlbumConnectionId | AlbumConnectionCreated_at | AlbumConnectionUpdated_at | AlbumConnectionName | AlbumConnectionReleaseDate | AlbumConnectionAlias | AlbumConnectionArtwork | AlbumConnectionExplicit | AlbumConnectionReleaseType | createAlbumPayload | updateAlbumPayload | deleteAlbumPayload | Artist | ArtistConnection | ArtistAggregator | ArtistGroupBy | ArtistConnectionId | ArtistConnectionCreated_at | ArtistConnectionUpdated_at | ArtistConnectionName | ArtistConnectionAlias | ArtistConnectionAvatar | createArtistPayload | updateArtistPayload | deleteArtistPayload | PlaylistTrack | PlaylistTrackConnection | PlaylistTrackAggregator | PlaylistTrackGroupBy | PlaylistTrackConnectionId | PlaylistTrackConnectionCreated_at | PlaylistTrackConnectionUpdated_at | PlaylistTrackConnectionAddedBy | PlaylistTrackConnectionTrack | PlaylistTrackConnectionPlaylist | createPlaylistTrackPayload | updatePlaylistTrackPayload | deletePlaylistTrackPayload | Playlist | PlaylistConnection | PlaylistAggregator | PlaylistAggregatorSum | PlaylistAggregatorAvg | PlaylistAggregatorMin | PlaylistAggregatorMax | PlaylistGroupBy | PlaylistConnectionId | PlaylistConnectionCreated_at | PlaylistConnectionUpdated_at | PlaylistConnectionAlias | PlaylistConnectionArtwork | PlaylistConnectionCollaborative | PlaylistConnectionCreator | PlaylistConnectionDescription | PlaylistConnectionDuration | PlaylistConnectionName | PlaylistConnectionNumTracks | PlaylistConnectionPrivacy | createPlaylistPayload | updatePlaylistPayload | deletePlaylistPayload | Track | TrackConnection | TrackAggregator | TrackAggregatorSum | TrackAggregatorAvg | TrackAggregatorMin | TrackAggregatorMax | TrackGroupBy | TrackConnectionId | TrackConnectionCreated_at | TrackConnectionUpdated_at | TrackConnectionName | TrackConnectionExplicit | TrackConnectionDuration | TrackConnectionAlbum | TrackConnectionTrackNumber | TrackConnectionDiscNumber | TrackConnectionIsPlayable | TrackConnectionAudio | createTrackPayload | updateTrackPayload | deleteTrackPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
   createAlbum(input: createAlbumInput): createAlbumPayload
@@ -607,6 +608,7 @@ type PlaylistTrack {
   updated_at: DateTime!
   addedBy: UsersPermissionsUser
   track: Track
+  playlist: Playlist
 }
 
 type PlaylistTrackAggregator {
@@ -635,6 +637,11 @@ type PlaylistTrackConnectionId {
   connection: PlaylistTrackConnection
 }
 
+type PlaylistTrackConnectionPlaylist {
+  key: ID
+  connection: PlaylistTrackConnection
+}
+
 type PlaylistTrackConnectionTrack {
   key: ID
   connection: PlaylistTrackConnection
@@ -651,11 +658,13 @@ type PlaylistTrackGroupBy {
   updated_at: [PlaylistTrackConnectionUpdated_at]
   addedBy: [PlaylistTrackConnectionAddedBy]
   track: [PlaylistTrackConnectionTrack]
+  playlist: [PlaylistTrackConnectionPlaylist]
 }
 
 input PlaylistTrackInput {
   addedBy: ID
   track: ID
+  playlist: ID
 }
 
 enum Privacy {

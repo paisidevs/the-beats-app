@@ -1,31 +1,31 @@
 {
   "_args": [
     [
-      "strapi-plugin-users-permissions@3.0.1",
+      "strapi-plugin-users-permissions@3.0.5",
       "/Users/elandamor/Workspace/Web/Personal/the-beats-app/packages/backend"
     ]
   ],
-  "_from": "strapi-plugin-users-permissions@3.0.1",
-  "_id": "strapi-plugin-users-permissions@3.0.1",
+  "_from": "strapi-plugin-users-permissions@3.0.5",
+  "_id": "strapi-plugin-users-permissions@3.0.5",
   "_inBundle": false,
-  "_integrity": "sha512-6jL3atFj3uKs3mF6ldfjk0lI/0nGnUfpkByDbttecEY5I1mwyDg3noetRY0DmX2dmYBUKCqpRMxxmB0i4CsRUQ==",
+  "_integrity": "sha512-Ov+E6VNTmzGMvCJYo5EOt1wY/8nLAJyHJ0AaGNx8W6gWHctlGVqke4TkN9Lz3jGIsdls0vi1QlGj/+qDaG9Ubw==",
   "_location": "/strapi-plugin-users-permissions",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "strapi-plugin-users-permissions@3.0.1",
+    "raw": "strapi-plugin-users-permissions@3.0.5",
     "name": "strapi-plugin-users-permissions",
     "escapedName": "strapi-plugin-users-permissions",
-    "rawSpec": "3.0.1",
+    "rawSpec": "3.0.5",
     "saveSpec": null,
-    "fetchSpec": "3.0.1"
+    "fetchSpec": "3.0.5"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-users-permissions/-/strapi-plugin-users-permissions-3.0.1.tgz",
-  "_spec": "3.0.1",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-users-permissions/-/strapi-plugin-users-permissions-3.0.5.tgz",
+  "_spec": "3.0.5",
   "_where": "/Users/elandamor/Workspace/Web/Personal/the-beats-app/packages/backend",
   "author": {
     "name": "Strapi team",
@@ -46,15 +46,15 @@
     "purest": "3.1.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-intl": "^4.5.0",
+    "react-intl": "4.5.0",
     "react-redux": "^7.0.2",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "reactstrap": "8.4.1",
     "redux-saga": "^0.16.0",
     "request": "^2.83.0",
-    "strapi-helper-plugin": "3.0.0",
-    "strapi-utils": "3.0.1",
+    "strapi-helper-plugin": "3.0.5",
+    "strapi-utils": "3.0.5",
     "uuid": "^3.1.0"
   },
   "description": "Protect your API with a full-authentication process based on JWT",
@@ -62,10 +62,10 @@
     "koa": "^2.8.0"
   },
   "engines": {
-    "node": ">=10.0.0",
+    "node": ">=10.10.0",
     "npm": ">=6.0.0"
   },
-  "gitHead": "5b64e05d7f565d359f28dccb9d9917124d1ad453",
+  "gitHead": "eaf40e1ada08f9a72bf94faf43c959a0a4d6c8a3",
   "homepage": "https://github.com/strapi/strapi#readme",
   "license": "MIT",
   "maintainers": [
@@ -89,5 +89,5 @@
     "description": "users-permissions.plugin.description",
     "required": true
   },
-  "version": "3.0.1"
+  "version": "3.0.5"
 }

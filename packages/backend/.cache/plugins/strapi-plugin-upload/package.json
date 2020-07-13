@@ -1,31 +1,31 @@
 {
   "_args": [
     [
-      "strapi-plugin-upload@3.0.1",
+      "strapi-plugin-upload@3.0.5",
       "/Users/elandamor/Workspace/Web/Personal/the-beats-app/packages/backend"
     ]
   ],
-  "_from": "strapi-plugin-upload@3.0.1",
-  "_id": "strapi-plugin-upload@3.0.1",
+  "_from": "strapi-plugin-upload@3.0.5",
+  "_id": "strapi-plugin-upload@3.0.5",
   "_inBundle": false,
-  "_integrity": "sha512-IXv5z4uUgCf0t1McK7z52NyaKxZuBhHb6zeDi4XlOoastTD4nFVyTHVrVvio9dk9q0Z/92uFwHgAcJkCMOm9kg==",
+  "_integrity": "sha512-4wdBnyBqjnMwX9YCVyWVenhjxjgNU9Xomex1WeUIEHkMJtWdNFpjZjRDshtqgUJEQX37ANnOUiGhJBSAczzZXQ==",
   "_location": "/strapi-plugin-upload",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "strapi-plugin-upload@3.0.1",
+    "raw": "strapi-plugin-upload@3.0.5",
     "name": "strapi-plugin-upload",
     "escapedName": "strapi-plugin-upload",
-    "rawSpec": "3.0.1",
+    "rawSpec": "3.0.5",
     "saveSpec": null,
-    "fetchSpec": "3.0.1"
+    "fetchSpec": "3.0.5"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-upload/-/strapi-plugin-upload-3.0.1.tgz",
-  "_spec": "3.0.1",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-upload/-/strapi-plugin-upload-3.0.5.tgz",
+  "_spec": "3.0.5",
   "_where": "/Users/elandamor/Workspace/Web/Personal/the-beats-app/packages/backend",
   "author": {
     "name": "A Strapi developer"
@@ -44,24 +44,24 @@
     "react": "^16.9.0",
     "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.9.0",
-    "react-intl": "^4.5.0",
+    "react-intl": "4.5.0",
     "react-redux": "^7.0.2",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "reactstrap": "8.4.1",
     "sharp": "0.24.1",
-    "strapi-helper-plugin": "3.0.0",
-    "strapi-provider-upload-local": "3.0.1",
-    "strapi-utils": "3.0.1",
+    "strapi-helper-plugin": "3.0.5",
+    "strapi-provider-upload-local": "3.0.5",
+    "strapi-utils": "3.0.5",
     "stream-to-array": "^2.3.0",
     "uuid": "^3.2.1"
   },
   "description": "This is the description of the plugin.",
   "engines": {
-    "node": ">=10.0.0",
+    "node": ">=10.10.0",
     "npm": ">=6.0.0"
   },
-  "gitHead": "5b64e05d7f565d359f28dccb9d9917124d1ad453",
+  "gitHead": "eaf40e1ada08f9a72bf94faf43c959a0a4d6c8a3",
   "license": "MIT",
   "maintainers": [
     {
@@ -77,5 +77,5 @@
     "icon": "cloud-upload-alt",
     "description": "upload.plugin.description"
   },
-  "version": "3.0.1"
+  "version": "3.0.5"
 }
