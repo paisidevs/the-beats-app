@@ -6,7 +6,7 @@ const Playlists: React.FC = () => {
   return (
     <ScrollView>
       <Helmet>
-        <title>the-beats-app - Built with love by @paisidevs</title>
+        <title>the-beats-app - Playlists</title>
       </Helmet>
     </ScrollView>
   );
