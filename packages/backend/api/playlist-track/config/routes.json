@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/playlist-tracks",
+      "handler": "playlist-track.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/playlist-tracks/count",
+      "handler": "playlist-track.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/playlist-tracks/:id",
+      "handler": "playlist-track.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/playlist-tracks",
+      "handler": "playlist-track.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/playlist-tracks/:id",
+      "handler": "playlist-track.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/playlist-tracks/:id",
+      "handler": "playlist-track.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

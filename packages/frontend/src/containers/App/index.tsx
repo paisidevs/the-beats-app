@@ -1,12 +1,16 @@
-import { Box, ErrorBoundary, Grid, Routes } from '@paisidevs/tra-components';
-import { Global, ThemeProvider } from '@paisidevs/tra-theme';
-import React, { FC } from 'react';
-import { routes } from './routes';
+import { Box, ErrorBoundary, Grid, Routes } from "@paisidevs/tra-components";
+import { Global, ThemeProvider } from "@paisidevs/tra-theme";
+import React, { FC } from "react";
+import { Header } from "../../components";
+import { routes } from "./routes";
 
 const App: FC = () => {
   const renderApp = () => {
     return (
       <React.Fragment>
+        <ErrorBoundary>
+          <Header />
+        </ErrorBoundary>
         <Box height="100%" overflow="hidden">
           <ErrorBoundary>
             <Routes routes={routes} />
@@ -19,9 +23,9 @@ const App: FC = () => {
   return (
     <ThemeProvider>
       <Grid
-        backgroundColor="background.base"
+        backgroundColor="background.surface"
         color="text.default"
-        gridTemplateRows={['auto 1fr auto', 'auto 1fr auto']}
+        gridTemplateRows="64px 1fr"
         height="100%"
         overflow="hidden"
       >

@@ -1,0 +1,20 @@
+#import './artist.graphql'
+#import './track.graphql'
+
+fragment album on Album {
+  id
+  name
+  artwork {
+    id
+    url
+  }
+  artists {
+    ...artist
+  }
+  tracks {
+    ...track
+  }
+  releaseType
+  created_at
+  updated_at
+}

@@ -1,0 +1,26 @@
+type Artist implements Node {
+  albums: [Album]
+  alias: String!
+  avatar: Image
+  avatarId: String
+  createdAt: DateTime!
+  featuresIn: [Track]
+  genres: [String]
+  id: Int!
+  name: String
+  tracks: [Track]
+}
+
+type Query {
+  artist(id: Int!): Artist
+  artists: [Artist]
+}
+
+type Mutation {
+  createArtist(input: ArtistCreatePayload!): Artist
+}
+
+input ArtistCreatePayload {
+  alias: String!
+  name: String!
+}

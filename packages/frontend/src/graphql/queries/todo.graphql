@@ -1,7 +1,0 @@
-#import '../fragments/todo.graphql'
-
-query todos {
-  todos @client {
-    ...todo
-  }
-}

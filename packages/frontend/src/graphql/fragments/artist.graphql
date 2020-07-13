@@ -1,0 +1,10 @@
+fragment artist on Artist {
+  id
+  name
+  avatar {
+    id
+    url
+  }
+  created_at
+  updated_at
+}

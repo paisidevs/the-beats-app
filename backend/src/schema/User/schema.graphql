@@ -1,0 +1,60 @@
+enum Role {
+  ADMIN
+  SUBSCRIBER
+}
+
+type User implements Node {
+  id: Int!
+  createdAt: DateTime!
+  email: String!
+  firstName: String
+  lastName: String
+  playlists: [Playlist]
+  role: Role
+  username: String!
+  verified: Boolean!
+}
+
+type CognitoUserAttributes {
+  email: String!
+  firstName: String
+  lastName: String
+  role: Role!
+  username: String
+  verified: Boolean!
+}
+
+type CognitoUser {
+  id: Int!
+  accessToken: String!
+  attributes: CognitoUserAttributes!
+}
+
+input CreateUserInput {
+  email: String!
+  password: String!
+  role: Role
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  firstName: NonEmptyString
+  lastName: NonEmptyString
+  role: Role
+}
+
+type Query {
+  user(id: Int!): User
+  users: [User]
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): CognitoUser!
+  updateUser(input: UpdateUserInput!): User!
+  deleteUser(id: Int!): User
+  authenticateUser(input: LoginUserInput!): CognitoUser!
+}

@@ -1,0 +1,77 @@
+{
+  "_args": [
+    [
+      "strapi-plugin-email@3.0.5",
+      "/Users/elandamor/Workspace/Web/Personal/the-beats-app/packages/backend"
+    ]
+  ],
+  "_from": "strapi-plugin-email@3.0.5",
+  "_id": "strapi-plugin-email@3.0.5",
+  "_inBundle": false,
+  "_integrity": "sha512-Z6ftzRFLW0ox0Ctn2xX2pubu7rfmBEBoiEYWO9Ki93koY8Uq+Hpjlhz9pZed8t2BNS/BAmHOl049zhn0vocnZA==",
+  "_location": "/strapi-plugin-email",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "strapi-plugin-email@3.0.5",
+    "name": "strapi-plugin-email",
+    "escapedName": "strapi-plugin-email",
+    "rawSpec": "3.0.5",
+    "saveSpec": null,
+    "fetchSpec": "3.0.5"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-email/-/strapi-plugin-email-3.0.5.tgz",
+  "_spec": "3.0.5",
+  "_where": "/Users/elandamor/Workspace/Web/Personal/the-beats-app/packages/backend",
+  "author": {
+    "name": "Strapi team",
+    "email": "hi@strapi.io",
+    "url": "http://strapi.io"
+  },
+  "bugs": {
+    "url": "https://github.com/strapi/strapi/issues"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "strapi-provider-email-sendmail": "3.0.5",
+    "strapi-utils": "3.0.5"
+  },
+  "description": "This is the description of the plugin.",
+  "devDependencies": {
+    "rimraf": "3.0.0",
+    "strapi-helper-plugin": "3.0.5"
+  },
+  "engines": {
+    "node": ">=10.10.0",
+    "npm": ">=6.0.0"
+  },
+  "gitHead": "eaf40e1ada08f9a72bf94faf43c959a0a4d6c8a3",
+  "homepage": "https://github.com/strapi/strapi#readme",
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "Strapi team",
+      "email": "hi@strapi.io",
+      "url": "http://strapi.io"
+    }
+  ],
+  "name": "strapi-plugin-email",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/strapi/strapi.git"
+  },
+  "scripts": {
+    "test": "echo \"no tests yet\""
+  },
+  "strapi": {
+    "name": "Email",
+    "icon": "paper-plane",
+    "description": "email.plugin.description",
+    "required": true
+  },
+  "version": "3.0.5"
+}

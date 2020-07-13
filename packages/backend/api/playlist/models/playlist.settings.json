@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "playlists",
+  "info": {
+    "name": "Playlist"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "alias": {
+      "type": "string"
+    },
+    "artwork": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "collaborative": {
+      "type": "boolean",
+      "default": false
+    },
+    "creator": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "playlists"
+    },
+    "description": {
+      "type": "text"
+    },
+    "duration": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "numTracks": {
+      "type": "integer"
+    },
+    "privacy": {
+      "type": "enumeration",
+      "enum": [
+        "Private",
+        "Public",
+        "Unlisted"
+      ],
+      "enumName": "Privacy",
+      "default": "Private"
+    },
+    "tracks": {
+      "via": "playlist",
+      "collection": "playlist-track"
+    }
+  }
+}

@@ -1,0 +1,1287 @@
+type Album {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  releaseDate: Date
+  alias: String
+  artwork: UploadFile
+  explicit: Boolean
+  releaseType: ENUM_ALBUM_RELEASETYPE
+  artists(sort: String, limit: Int, start: Int, where: JSON): [Artist]
+  tracks(sort: String, limit: Int, start: Int, where: JSON): [Track]
+}
+
+type AlbumAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type AlbumConnection {
+  values: [Album]
+  groupBy: AlbumGroupBy
+  aggregate: AlbumAggregator
+}
+
+type AlbumConnectionAlias {
+  key: String
+  connection: AlbumConnection
+}
+
+type AlbumConnectionArtwork {
+  key: ID
+  connection: AlbumConnection
+}
+
+type AlbumConnectionCreated_at {
+  key: DateTime
+  connection: AlbumConnection
+}
+
+type AlbumConnectionExplicit {
+  key: Boolean
+  connection: AlbumConnection
+}
+
+type AlbumConnectionId {
+  key: ID
+  connection: AlbumConnection
+}
+
+type AlbumConnectionName {
+  key: String
+  connection: AlbumConnection
+}
+
+type AlbumConnectionReleaseDate {
+  key: ID
+  connection: AlbumConnection
+}
+
+type AlbumConnectionReleaseType {
+  key: String
+  connection: AlbumConnection
+}
+
+type AlbumConnectionUpdated_at {
+  key: DateTime
+  connection: AlbumConnection
+}
+
+type AlbumGroupBy {
+  id: [AlbumConnectionId]
+  created_at: [AlbumConnectionCreated_at]
+  updated_at: [AlbumConnectionUpdated_at]
+  name: [AlbumConnectionName]
+  releaseDate: [AlbumConnectionReleaseDate]
+  alias: [AlbumConnectionAlias]
+  artwork: [AlbumConnectionArtwork]
+  explicit: [AlbumConnectionExplicit]
+  releaseType: [AlbumConnectionReleaseType]
+}
+
+input AlbumInput {
+  name: String
+  releaseDate: Date
+  artists: [ID]
+  tracks: [ID]
+  alias: String
+  artwork: ID
+  explicit: Boolean
+  releaseType: ENUM_ALBUM_RELEASETYPE
+}
+
+type Artist {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  alias: String
+  avatar: UploadFile
+  albums(sort: String, limit: Int, start: Int, where: JSON): [Album]
+  featuresIn(sort: String, limit: Int, start: Int, where: JSON): [Track]
+  tracks(sort: String, limit: Int, start: Int, where: JSON): [Track]
+}
+
+type ArtistAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ArtistConnection {
+  values: [Artist]
+  groupBy: ArtistGroupBy
+  aggregate: ArtistAggregator
+}
+
+type ArtistConnectionAlias {
+  key: String
+  connection: ArtistConnection
+}
+
+type ArtistConnectionAvatar {
+  key: ID
+  connection: ArtistConnection
+}
+
+type ArtistConnectionCreated_at {
+  key: DateTime
+  connection: ArtistConnection
+}
+
+type ArtistConnectionId {
+  key: ID
+  connection: ArtistConnection
+}
+
+type ArtistConnectionName {
+  key: String
+  connection: ArtistConnection
+}
+
+type ArtistConnectionUpdated_at {
+  key: DateTime
+  connection: ArtistConnection
+}
+
+type ArtistGroupBy {
+  id: [ArtistConnectionId]
+  created_at: [ArtistConnectionCreated_at]
+  updated_at: [ArtistConnectionUpdated_at]
+  name: [ArtistConnectionName]
+  alias: [ArtistConnectionAlias]
+  avatar: [ArtistConnectionAvatar]
+}
+
+input ArtistInput {
+  name: String
+  alias: String
+  avatar: ID
+  albums: [ID]
+  featuresIn: [ID]
+  tracks: [ID]
+}
+
+input createAlbumInput {
+  data: AlbumInput
+}
+
+type createAlbumPayload {
+  album: Album
+}
+
+input createArtistInput {
+  data: ArtistInput
+}
+
+type createArtistPayload {
+  artist: Artist
+}
+
+input createPlaylistInput {
+  data: PlaylistInput
+}
+
+type createPlaylistPayload {
+  playlist: Playlist
+}
+
+input createPlaylistTrackInput {
+  data: PlaylistTrackInput
+}
+
+type createPlaylistTrackPayload {
+  playlistTrack: PlaylistTrack
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input createTrackInput {
+  data: TrackInput
+}
+
+type createTrackPayload {
+  track: Track
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format
+outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
+representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+`date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+input deleteAlbumInput {
+  where: InputID
+}
+
+type deleteAlbumPayload {
+  album: Album
+}
+
+input deleteArtistInput {
+  where: InputID
+}
+
+type deleteArtistPayload {
+  artist: Artist
+}
+
+input deletePlaylistInput {
+  where: InputID
+}
+
+type deletePlaylistPayload {
+  playlist: Playlist
+}
+
+input deletePlaylistTrackInput {
+  where: InputID
+}
+
+type deletePlaylistTrackPayload {
+  playlistTrack: PlaylistTrack
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteTrackInput {
+  where: InputID
+}
+
+type deleteTrackPayload {
+  track: Track
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+input editAlbumInput {
+  name: String
+  releaseDate: Date
+  artists: [ID]
+  tracks: [ID]
+  alias: String
+  artwork: ID
+  explicit: Boolean
+  releaseType: ENUM_ALBUM_RELEASETYPE
+}
+
+input editArtistInput {
+  name: String
+  alias: String
+  avatar: ID
+  albums: [ID]
+  featuresIn: [ID]
+  tracks: [ID]
+}
+
+input editFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+}
+
+input editPlaylistInput {
+  alias: String
+  artwork: ID
+  collaborative: Boolean
+  creator: ID
+  description: String
+  duration: Int
+  name: String
+  numTracks: Int
+  privacy: Privacy
+  tracks: [ID]
+}
+
+input editPlaylistTrackInput {
+  addedBy: ID
+  track: ID
+  playlist: ID
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+input editTrackInput {
+  name: String
+  explicit: Boolean
+  duration: Int
+  album: ID
+  trackNumber: Int
+  discNumber: Int
+  isPlayable: Boolean
+  artists: [ID]
+  featuring: [ID]
+  audio: ID
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  firstName: String
+  lastName: String
+  playlists: [ID]
+}
+
+enum ENUM_ALBUM_RELEASETYPE {
+  Album
+  EP
+  LP
+  Podcast
+  Single
+}
+
+input FileInput {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+}
+
+input InputID {
+  id: ID!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Album | AlbumConnection | AlbumAggregator | AlbumGroupBy | AlbumConnectionId | AlbumConnectionCreated_at | AlbumConnectionUpdated_at | AlbumConnectionName | AlbumConnectionReleaseDate | AlbumConnectionAlias | AlbumConnectionArtwork | AlbumConnectionExplicit | AlbumConnectionReleaseType | createAlbumPayload | updateAlbumPayload | deleteAlbumPayload | Artist | ArtistConnection | ArtistAggregator | ArtistGroupBy | ArtistConnectionId | ArtistConnectionCreated_at | ArtistConnectionUpdated_at | ArtistConnectionName | ArtistConnectionAlias | ArtistConnectionAvatar | createArtistPayload | updateArtistPayload | deleteArtistPayload | PlaylistTrack | PlaylistTrackConnection | PlaylistTrackAggregator | PlaylistTrackGroupBy | PlaylistTrackConnectionId | PlaylistTrackConnectionCreated_at | PlaylistTrackConnectionUpdated_at | PlaylistTrackConnectionAddedBy | PlaylistTrackConnectionTrack | PlaylistTrackConnectionPlaylist | createPlaylistTrackPayload | updatePlaylistTrackPayload | deletePlaylistTrackPayload | Playlist | PlaylistConnection | PlaylistAggregator | PlaylistAggregatorSum | PlaylistAggregatorAvg | PlaylistAggregatorMin | PlaylistAggregatorMax | PlaylistGroupBy | PlaylistConnectionId | PlaylistConnectionCreated_at | PlaylistConnectionUpdated_at | PlaylistConnectionAlias | PlaylistConnectionArtwork | PlaylistConnectionCollaborative | PlaylistConnectionCreator | PlaylistConnectionDescription | PlaylistConnectionDuration | PlaylistConnectionName | PlaylistConnectionNumTracks | PlaylistConnectionPrivacy | createPlaylistPayload | updatePlaylistPayload | deletePlaylistPayload | Track | TrackConnection | TrackAggregator | TrackAggregatorSum | TrackAggregatorAvg | TrackAggregatorMin | TrackAggregatorMax | TrackGroupBy | TrackConnectionId | TrackConnectionCreated_at | TrackConnectionUpdated_at | TrackConnectionName | TrackConnectionExplicit | TrackConnectionDuration | TrackConnectionAlbum | TrackConnectionTrackNumber | TrackConnectionDiscNumber | TrackConnectionIsPlayable | TrackConnectionAudio | createTrackPayload | updateTrackPayload | deleteTrackPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | createUserPayload | updateUserPayload | deleteUserPayload
+
+type Mutation {
+  createAlbum(input: createAlbumInput): createAlbumPayload
+  updateAlbum(input: updateAlbumInput): updateAlbumPayload
+  deleteAlbum(input: deleteAlbumInput): deleteAlbumPayload
+  createArtist(input: createArtistInput): createArtistPayload
+  updateArtist(input: updateArtistInput): updateArtistPayload
+  deleteArtist(input: deleteArtistInput): deleteArtistPayload
+  createPlaylistTrack(input: createPlaylistTrackInput): createPlaylistTrackPayload
+  updatePlaylistTrack(input: updatePlaylistTrackInput): updatePlaylistTrackPayload
+  deletePlaylistTrack(input: deletePlaylistTrackInput): deletePlaylistTrackPayload
+  createPlaylist(input: createPlaylistInput): createPlaylistPayload
+  updatePlaylist(input: updatePlaylistInput): updatePlaylistPayload
+  deletePlaylist(input: deletePlaylistInput): deletePlaylistPayload
+  createTrack(input: createTrackInput): createTrackPayload
+  updateTrack(input: updateTrackInput): updateTrackPayload
+  deleteTrack(input: deleteTrackInput): deleteTrackPayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  upload(refId: ID, ref: String, field: String, source: String, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  forgotPassword(email: String!): UserPermissionsPasswordPayload
+  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+}
+
+type Playlist {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  alias: String
+  artwork: UploadFile
+  collaborative: Boolean
+  creator: UsersPermissionsUser
+  description: String
+  duration: Int
+  name: String
+  numTracks: Int
+  privacy: Privacy
+  tracks(sort: String, limit: Int, start: Int, where: JSON): [PlaylistTrack]
+}
+
+type PlaylistAggregator {
+  count: Int
+  totalCount: Int
+  sum: PlaylistAggregatorSum
+  avg: PlaylistAggregatorAvg
+  min: PlaylistAggregatorMin
+  max: PlaylistAggregatorMax
+}
+
+type PlaylistAggregatorAvg {
+  duration: Float
+  numTracks: Float
+}
+
+type PlaylistAggregatorMax {
+  duration: Float
+  numTracks: Float
+}
+
+type PlaylistAggregatorMin {
+  duration: Float
+  numTracks: Float
+}
+
+type PlaylistAggregatorSum {
+  duration: Float
+  numTracks: Float
+}
+
+type PlaylistConnection {
+  values: [Playlist]
+  groupBy: PlaylistGroupBy
+  aggregate: PlaylistAggregator
+}
+
+type PlaylistConnectionAlias {
+  key: String
+  connection: PlaylistConnection
+}
+
+type PlaylistConnectionArtwork {
+  key: ID
+  connection: PlaylistConnection
+}
+
+type PlaylistConnectionCollaborative {
+  key: Boolean
+  connection: PlaylistConnection
+}
+
+type PlaylistConnectionCreated_at {
+  key: DateTime
+  connection: PlaylistConnection
+}
+
+type PlaylistConnectionCreator {
+  key: ID
+  connection: PlaylistConnection
+}
+
+type PlaylistConnectionDescription {
+  key: String
+  connection: PlaylistConnection
+}
+
+type PlaylistConnectionDuration {
+  key: Int
+  connection: PlaylistConnection
+}
+
+type PlaylistConnectionId {
+  key: ID
+  connection: PlaylistConnection
+}
+
+type PlaylistConnectionName {
+  key: String
+  connection: PlaylistConnection
+}
+
+type PlaylistConnectionNumTracks {
+  key: Int
+  connection: PlaylistConnection
+}
+
+type PlaylistConnectionPrivacy {
+  key: String
+  connection: PlaylistConnection
+}
+
+type PlaylistConnectionUpdated_at {
+  key: DateTime
+  connection: PlaylistConnection
+}
+
+type PlaylistGroupBy {
+  id: [PlaylistConnectionId]
+  created_at: [PlaylistConnectionCreated_at]
+  updated_at: [PlaylistConnectionUpdated_at]
+  alias: [PlaylistConnectionAlias]
+  artwork: [PlaylistConnectionArtwork]
+  collaborative: [PlaylistConnectionCollaborative]
+  creator: [PlaylistConnectionCreator]
+  description: [PlaylistConnectionDescription]
+  duration: [PlaylistConnectionDuration]
+  name: [PlaylistConnectionName]
+  numTracks: [PlaylistConnectionNumTracks]
+  privacy: [PlaylistConnectionPrivacy]
+}
+
+input PlaylistInput {
+  alias: String
+  artwork: ID
+  collaborative: Boolean
+  creator: ID
+  description: String
+  duration: Int
+  name: String
+  numTracks: Int
+  privacy: Privacy
+  tracks: [ID]
+}
+
+type PlaylistTrack {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  addedBy: UsersPermissionsUser
+  track: Track
+  playlist: Playlist
+}
+
+type PlaylistTrackAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type PlaylistTrackConnection {
+  values: [PlaylistTrack]
+  groupBy: PlaylistTrackGroupBy
+  aggregate: PlaylistTrackAggregator
+}
+
+type PlaylistTrackConnectionAddedBy {
+  key: ID
+  connection: PlaylistTrackConnection
+}
+
+type PlaylistTrackConnectionCreated_at {
+  key: DateTime
+  connection: PlaylistTrackConnection
+}
+
+type PlaylistTrackConnectionId {
+  key: ID
+  connection: PlaylistTrackConnection
+}
+
+type PlaylistTrackConnectionPlaylist {
+  key: ID
+  connection: PlaylistTrackConnection
+}
+
+type PlaylistTrackConnectionTrack {
+  key: ID
+  connection: PlaylistTrackConnection
+}
+
+type PlaylistTrackConnectionUpdated_at {
+  key: DateTime
+  connection: PlaylistTrackConnection
+}
+
+type PlaylistTrackGroupBy {
+  id: [PlaylistTrackConnectionId]
+  created_at: [PlaylistTrackConnectionCreated_at]
+  updated_at: [PlaylistTrackConnectionUpdated_at]
+  addedBy: [PlaylistTrackConnectionAddedBy]
+  track: [PlaylistTrackConnectionTrack]
+  playlist: [PlaylistTrackConnectionPlaylist]
+}
+
+input PlaylistTrackInput {
+  addedBy: ID
+  track: ID
+  playlist: ID
+}
+
+enum Privacy {
+  Private
+  Public
+  Unlisted
+}
+
+type Query {
+  album(id: ID!): Album
+  albums(sort: String, limit: Int, start: Int, where: JSON): [Album]
+  albumsConnection(sort: String, limit: Int, start: Int, where: JSON): AlbumConnection
+  artist(id: ID!): Artist
+  artists(sort: String, limit: Int, start: Int, where: JSON): [Artist]
+  artistsConnection(sort: String, limit: Int, start: Int, where: JSON): ArtistConnection
+  playlistTrack(id: ID!): PlaylistTrack
+  playlistTracks(sort: String, limit: Int, start: Int, where: JSON): [PlaylistTrack]
+  playlistTracksConnection(sort: String, limit: Int, start: Int, where: JSON): PlaylistTrackConnection
+  playlist(id: ID!): Playlist
+  playlists(sort: String, limit: Int, start: Int, where: JSON): [Playlist]
+  playlistsConnection(sort: String, limit: Int, start: Int, where: JSON): PlaylistConnection
+  track(id: ID!): Track
+  tracks(sort: String, limit: Int, start: Int, where: JSON): [Track]
+  tracksConnection(sort: String, limit: Int, start: Int, where: JSON): TrackConnection
+  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  role(id: ID!): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  user(id: ID!): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  me: UsersPermissionsMe
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+"""A time string with format: HH:mm:ss.SSS"""
+scalar Time
+
+type Track {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  explicit: Boolean
+  duration: Int
+  album: Album
+  trackNumber: Int
+  discNumber: Int
+  isPlayable: Boolean
+  audio: UploadFile
+  artists(sort: String, limit: Int, start: Int, where: JSON): [Artist]
+  featuring(sort: String, limit: Int, start: Int, where: JSON): [Artist]
+}
+
+type TrackAggregator {
+  count: Int
+  totalCount: Int
+  sum: TrackAggregatorSum
+  avg: TrackAggregatorAvg
+  min: TrackAggregatorMin
+  max: TrackAggregatorMax
+}
+
+type TrackAggregatorAvg {
+  duration: Float
+  trackNumber: Float
+  discNumber: Float
+}
+
+type TrackAggregatorMax {
+  duration: Float
+  trackNumber: Float
+  discNumber: Float
+}
+
+type TrackAggregatorMin {
+  duration: Float
+  trackNumber: Float
+  discNumber: Float
+}
+
+type TrackAggregatorSum {
+  duration: Float
+  trackNumber: Float
+  discNumber: Float
+}
+
+type TrackConnection {
+  values: [Track]
+  groupBy: TrackGroupBy
+  aggregate: TrackAggregator
+}
+
+type TrackConnectionAlbum {
+  key: ID
+  connection: TrackConnection
+}
+
+type TrackConnectionAudio {
+  key: ID
+  connection: TrackConnection
+}
+
+type TrackConnectionCreated_at {
+  key: DateTime
+  connection: TrackConnection
+}
+
+type TrackConnectionDiscNumber {
+  key: Int
+  connection: TrackConnection
+}
+
+type TrackConnectionDuration {
+  key: Int
+  connection: TrackConnection
+}
+
+type TrackConnectionExplicit {
+  key: Boolean
+  connection: TrackConnection
+}
+
+type TrackConnectionId {
+  key: ID
+  connection: TrackConnection
+}
+
+type TrackConnectionIsPlayable {
+  key: Boolean
+  connection: TrackConnection
+}
+
+type TrackConnectionName {
+  key: String
+  connection: TrackConnection
+}
+
+type TrackConnectionTrackNumber {
+  key: Int
+  connection: TrackConnection
+}
+
+type TrackConnectionUpdated_at {
+  key: DateTime
+  connection: TrackConnection
+}
+
+type TrackGroupBy {
+  id: [TrackConnectionId]
+  created_at: [TrackConnectionCreated_at]
+  updated_at: [TrackConnectionUpdated_at]
+  name: [TrackConnectionName]
+  explicit: [TrackConnectionExplicit]
+  duration: [TrackConnectionDuration]
+  album: [TrackConnectionAlbum]
+  trackNumber: [TrackConnectionTrackNumber]
+  discNumber: [TrackConnectionDiscNumber]
+  isPlayable: [TrackConnectionIsPlayable]
+  audio: [TrackConnectionAudio]
+}
+
+input TrackInput {
+  name: String
+  explicit: Boolean
+  duration: Int
+  album: ID
+  trackNumber: Int
+  discNumber: Int
+  isPlayable: Boolean
+  artists: [ID]
+  featuring: [ID]
+  audio: ID
+}
+
+input updateAlbumInput {
+  where: InputID
+  data: editAlbumInput
+}
+
+type updateAlbumPayload {
+  album: Album
+}
+
+input updateArtistInput {
+  where: InputID
+  data: editArtistInput
+}
+
+type updateArtistPayload {
+  artist: Artist
+}
+
+input updatePlaylistInput {
+  where: InputID
+  data: editPlaylistInput
+}
+
+type updatePlaylistPayload {
+  playlist: Playlist
+}
+
+input updatePlaylistTrackInput {
+  where: InputID
+  data: editPlaylistTrackInput
+}
+
+type updatePlaylistTrackPayload {
+  playlistTrack: PlaylistTrack
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateTrackInput {
+  where: InputID
+  data: editTrackInput
+}
+
+type updateTrackPayload {
+  track: Track
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadFile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileAggregator {
+  count: Int
+  totalCount: Int
+  sum: UploadFileAggregatorSum
+  avg: UploadFileAggregatorAvg
+  min: UploadFileAggregatorMin
+  max: UploadFileAggregatorMax
+}
+
+type UploadFileAggregatorAvg {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMax {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMin {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorSum {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileConnectionAlternativeText {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCaption {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionFormats {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHeight {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionId {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPreviewUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider_metadata {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: Float
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionWidth {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileGroupBy {
+  id: [UploadFileConnectionId]
+  created_at: [UploadFileConnectionCreated_at]
+  updated_at: [UploadFileConnectionUpdated_at]
+  name: [UploadFileConnectionName]
+  alternativeText: [UploadFileConnectionAlternativeText]
+  caption: [UploadFileConnectionCaption]
+  width: [UploadFileConnectionWidth]
+  height: [UploadFileConnectionHeight]
+  formats: [UploadFileConnectionFormats]
+  hash: [UploadFileConnectionHash]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  previewUrl: [UploadFileConnectionPreviewUrl]
+  provider: [UploadFileConnectionProvider]
+  provider_metadata: [UploadFileConnectionProvider_metadata]
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  firstName: String
+  lastName: String
+  playlists: [ID]
+}
+
+type UserPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String!
+  user: UsersPermissionsMe!
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsRoleAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsRoleConnection {
+  values: [UsersPermissionsRole]
+  groupBy: UsersPermissionsRoleGroupBy
+  aggregate: UsersPermissionsRoleAggregator
+}
+
+type UsersPermissionsRoleConnectionDescription {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionId {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionName {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionType {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleGroupBy {
+  id: [UsersPermissionsRoleConnectionId]
+  name: [UsersPermissionsRoleConnectionName]
+  description: [UsersPermissionsRoleConnectionDescription]
+  type: [UsersPermissionsRoleConnectionType]
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+  firstName: String
+  lastName: String
+  playlists(sort: String, limit: Int, start: Int, where: JSON): [Playlist]
+}
+
+type UsersPermissionsUserAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsUserConnection {
+  values: [UsersPermissionsUser]
+  groupBy: UsersPermissionsUserGroupBy
+  aggregate: UsersPermissionsUserAggregator
+}
+
+type UsersPermissionsUserConnectionBlocked {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionConfirmed {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionFirstName {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionId {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionLastName {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionProvider {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionRole {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUsername {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserGroupBy {
+  id: [UsersPermissionsUserConnectionId]
+  created_at: [UsersPermissionsUserConnectionCreated_at]
+  updated_at: [UsersPermissionsUserConnectionUpdated_at]
+  username: [UsersPermissionsUserConnectionUsername]
+  email: [UsersPermissionsUserConnectionEmail]
+  provider: [UsersPermissionsUserConnectionProvider]
+  confirmed: [UsersPermissionsUserConnectionConfirmed]
+  blocked: [UsersPermissionsUserConnectionBlocked]
+  role: [UsersPermissionsUserConnectionRole]
+  firstName: [UsersPermissionsUserConnectionFirstName]
+  lastName: [UsersPermissionsUserConnectionLastName]
+}

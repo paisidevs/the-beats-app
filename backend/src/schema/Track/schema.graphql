@@ -1,0 +1,34 @@
+type Track implements Node {
+  albumId: String!
+  audioId: String
+  createdAt: DateTime!
+  discNumber: Int
+  duration: Int
+  explicit: Boolean!
+  genre: String!
+  id: Int!
+  isPlayable: Boolean!
+  name: String!
+  trackNumber: Int
+  album: Album!
+  audio: Audio
+  artists: [Artist]
+  featuring: [Artist]
+}
+
+type Query {
+  track(id: Int!): Track
+  tracks: [Track]
+}
+
+type Mutation {
+  createTrack(input: TrackCreatePayload!): Track
+}
+
+input TrackCreatePayload {
+  artists: [ArtistPayload!]!
+  duration: Duration!
+  featuring: [ArtistPayload!]
+  name: NonEmptyString!
+  trackNumber: Int!
+}
