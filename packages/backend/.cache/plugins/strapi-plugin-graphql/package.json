@@ -31,7 +31,7 @@
     "name": "A Strapi developer"
   },
   "dependencies": {
-    "apollo-server-koa": "2.9.12",
+    "apollo-server-koa": "2.15.1",
     "dataloader": "^1.4.0",
     "glob": "^7.1.4",
     "graphql": "^14.3.0",
