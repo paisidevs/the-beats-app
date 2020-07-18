@@ -16,6 +16,7 @@ fragment track on Track {
   album {
     id
     artwork {
+      id
       url
     }
     created_at

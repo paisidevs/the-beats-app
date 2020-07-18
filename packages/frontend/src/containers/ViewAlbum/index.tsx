@@ -26,7 +26,7 @@ export const AlbumBreadcrumb: FC<RouteComponentProps<{ id: string }>> = ({
 
   return (
     <React.Fragment>
-      {`${data?.album?.name}${isSingle ? " - Single" : ""}`}
+      {`${data?.album?.name || "Album"}${isSingle ? " - Single" : ""}`}
     </React.Fragment>
   );
 };
@@ -42,7 +42,7 @@ const ViewAlbum: FC = () => {
 
   return (
     <ScrollView>
-      <Animated display="none" padding={2} style={useFadeIn}>
+      <Animated padding={2} style={useFadeIn}>
         <Grid gridTemplateColumns="5fr 7fr" gridGap={2} width="100%">
           <Box flex="none">
             <Image
