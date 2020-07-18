@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "develop": "strapi develop --watch-admin",
+    "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"
@@ -12,18 +12,18 @@
   "devDependencies": {},
   "dependencies": {
     "get-audio-duration": "2.0.2",
-    "knex": "<0.21.1",
+    "knex": "<0.21.2",
     "pg": "latest",
-    "strapi": "3.0.5",
-    "strapi-admin": "3.0.5",
-    "strapi-connector-bookshelf": "3.0.5",
-    "strapi-plugin-content-manager": "3.0.5",
-    "strapi-plugin-content-type-builder": "3.0.5",
-    "strapi-plugin-email": "3.0.5",
-    "strapi-plugin-graphql": "3.0.5",
-    "strapi-plugin-upload": "3.0.5",
-    "strapi-plugin-users-permissions": "3.0.5",
-    "strapi-utils": "3.0.5"
+    "strapi": "3.0.6",
+    "strapi-admin": "3.0.6",
+    "strapi-connector-bookshelf": "3.0.6",
+    "strapi-plugin-content-manager": "3.0.6",
+    "strapi-plugin-content-type-builder": "3.0.6",
+    "strapi-plugin-email": "3.0.6",
+    "strapi-plugin-graphql": "3.0.6",
+    "strapi-plugin-upload": "3.0.6",
+    "strapi-plugin-users-permissions": "3.0.6",
+    "strapi-utils": "3.0.6"
   },
   "author": {
     "name": "A Strapi developer"
