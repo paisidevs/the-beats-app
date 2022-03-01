@@ -14,7 +14,7 @@
     "get-audio-duration": "2.0.2",
     "knex": "<0.21.2",
     "pg": "latest",
-    "strapi": "3.0.6",
+    "strapi": "3.6.8",
     "strapi-admin": "3.0.6",
     "strapi-connector-bookshelf": "3.0.6",
     "strapi-plugin-content-manager": "3.0.6",
